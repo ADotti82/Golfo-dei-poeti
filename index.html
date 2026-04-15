@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Dialogo del Sublime: Fede e Poesia in Liguria</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                        display: ['Cinzel', 'serif'],
+                    },
+                    colors: {
+                        gold: { 300: '#FDE68A', 400: '#FBBF24', 500: '#D4AF37', 600: '#B45309' },
+                        sky: { 900: '#0c4a6e', 800: '#075985', 700: '#0369a1', 400: '#38bdf8' },
+                        dark: { 900: '#09090b', 800: '#18181b', 700: '#27272a' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* Base Styling for Long-Read Experience */
+        body { background-color: #09090b; color: #f8fafc; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+
+        /* Typography Refinements */
+        .drop-cap::first-letter {
+            font-family: 'Cinzel', serif; font-size: 4.5rem; float: left;
+            line-height: 0.8; padding-right: 0.5rem; padding-top: 0.4rem; color: #D4AF37;
+        }
+
+        .poem-text { white-space: pre-line; line-height: 1.8; }
+
+        /* Smooth Reveal Animations */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 150ms; }
+        .reveal-delay-2 { transition-delay: 300ms; }
+
+        /* Background Utilities */
+        .bg-glass-strong { background: rgba(9, 9, 11, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        
+        /* Image Utilities & Filters for Cohesion */
+        .img-cover { object-fit: cover; object-position: center; width: 100%; height: 100%; filter: grayscale(20%) sepia(10%); }
+        
+        .poet-portrait { 
+            width: 160px; height: 160px; object-fit: cover; object-position: top;
+            border-radius: 50%; border: 3px solid #D4AF37; 
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            transition: transform 0.5s ease, filter 0.5s ease;
+            filter: grayscale(30%) sepia(15%);
+        }
+        @media (min-width: 768px) { .poet-portrait { width: 220px; height: 220px; } }
+        .poet-portrait:hover { transform: scale(1.05); filter: grayscale(0%) sepia(0%); }
+
+        /* Anthology Container */
+        .anthology-box {
+            background: linear-gradient(to bottom right, rgba(39, 39, 42, 0.4), rgba(24, 24, 27, 0.8));
+            border-radius: 1.5rem; border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.5), 0 20px 40px rgba(0,0,0,0.4);
+            position: relative; overflow: hidden;
+        }
+        .anthology-box::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.5), transparent);
+        }
+        
+        /* Map Button */
+        .btn-maps {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(3, 105, 161, 0.1); border: 1px solid rgba(56, 189, 248, 0.5);
+            color: #38bdf8; padding: 0.5rem 1rem; border-radius: 9999px;
+            font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+            transition: all 0.3s ease; text-decoration: none;
+        }
+        .btn-maps:hover { background: rgba(3, 105, 161, 0.3); border-color: #38bdf8; box-shadow: 0 0 15px rgba(56, 189, 248, 0.2); }
+
+        /* Chart */
+        .chart-wrapper { position: relative; width: 100%; max-width: 600px; margin: 0 auto; height: 400px; }
+        @media (min-width: 1024px) { .chart-wrapper { height: 500px; } }
+
+        /* Custom Table Styling for Logistics */
+        .logistics-table-container {
+            overflow-x: auto;
+            border-radius: 1rem;
+            border: 1px solid rgba(113, 113, 122, 0.3); /* zinc-500 */
+            background: rgba(24, 24, 27, 0.6); /* zinc-900 */
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            margin-bottom: 3rem;
+        }
+        .logistics-table { width: 100%; text-align: left; border-collapse: collapse; min-width: 700px; }
+        .logistics-table th {
+            padding: 1rem 1.25rem;
+            background-color: rgba(39, 39, 42, 0.8); /* zinc-800 */
+            color: #D4AF37; /* gold-500 */
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            white-space: nowrap;
+        }
+        .logistics-table td {
+            padding: 1.25rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.125rem;
+            color: #d4d4d8; /* zinc-300 */
+            border-bottom: 1px solid rgba(63, 63, 70, 0.5); /* zinc-700 */
+        }
+        .logistics-table tbody tr:hover { background-color: rgba(39, 39, 42, 0.4); transition: background-color 0.3s; }
+        .logistics-table td:first-child { font-family: 'Cinzel', serif; font-weight: bold; color: #FBBF24; /* gold-400 */ }
+        .logistics-table a { color: #38bdf8; font-family: 'Inter', sans-serif; font-size: 0.85rem; transition: color 0.3s; }
+        .logistics-table a:hover { color: #7dd3fc; text-decoration: underline; }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-500 selection:text-dark-900">
+
+    <nav class="fixed w-full z-40 bg-glass-strong transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex flex-col">
+                <span class="font-display font-bold text-gold-500 text-lg tracking-widest">LICEO CALINI</span>
+                <span class="font-sans text-[10px] text-zinc-400 uppercase tracking-[0.2em] hidden md:block">Il Golfo dei Poeti 2026</span>
+            </div>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#prologo" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Prologo</a>
+                <a href="#mappa" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Luoghi</a>
+                <a href="#poeti" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Poeti & Testi</a>
+                <a href="#programma" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Il Programma</a>
+            </div>
+            <div class="md:hidden flex space-x-4 overflow-x-auto no-scrollbar w-full ml-4">
+                <a href="#poeti" class="font-sans text-[10px] uppercase tracking-widest text-zinc-300 hover:text-gold-500 whitespace-nowrap">Testi</a>
+                <a href="#programma" class="font-sans text-[10px] uppercase tracking-widest text-zinc-300 hover:text-gold-500 whitespace-nowrap">Logistica</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative min-h-[90vh] flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Chiesa_San_Pietro_Porto_Venere.jpg" alt="Mare Ligure Tempestoso" class="img-cover opacity-50">
+            <div class="absolute inset-0 bg-gradient-to-b from-dark-900/50 via-dark-900/70 to-dark-900"></div>
+        </div>
+        
+        <div class="relative z-10 w-full max-w-5xl mx-auto px-6 flex flex-col items-center text-center reveal">
+            <div class="inline-block px-5 py-2 rounded-full border border-gold-500/30 bg-gold-500/10 mb-8 backdrop-blur-md">
+                <p class="font-sans text-gold-400 tracking-[0.15em] uppercase text-[10px] md:text-xs">Classi 5C e 5G • 7-9 Marzo 2026</p>
+            </div>
+            <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] mb-8">
+                In the Footsteps<br>of the <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-amber-600">Romantics</span>
+            </h1>
+            <p class="font-serif text-xl md:text-3xl text-zinc-300 italic mb-12 max-w-3xl leading-relaxed">
+                Il Sublime della natura ligure non è un rifiuto dell'Eterno, ma il meraviglioso trampolino che prepara l'animo umano all'incontro con la Rivelazione.
+            </p>
+            <a href="#prologo" class="w-14 h-14 rounded-full border border-zinc-700 flex items-center justify-center text-gold-500 hover:bg-gold-500 hover:text-dark-900 transition-all duration-300 animate-bounce">
+                <i class="fa-solid fa-arrow-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="prologo" class="py-24 md:py-32 bg-dark-900 relative">
+        <div class="max-w-4xl mx-auto px-6 reveal">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="h-px flex-1 bg-gradient-to-r from-transparent to-gold-500"></div>
+                <h2 class="font-display text-3xl md:text-4xl text-gold-500 text-center">Il Ponte verso il Mistero</h2>
+                <div class="h-px flex-1 bg-gradient-to-l from-transparent to-gold-500"></div>
+            </div>
+            
+            <p class="font-serif text-xl md:text-2xl text-zinc-300 leading-loose drop-cap mb-8 text-justify">
+                Giungendo sui lidi liguri, la nostra mente potrebbe essere indotta a tracciare un confine netto, quasi una trincea militare, tra il silenzio rassicurante e ordinato della preghiera eucaristica e le tempeste intellettuali che agitavano gli animi di Byron, Shelley e Keats lungo queste stesse identiche coste. Sarebbe tuttavia un grave errore critico e teologico considerare l'impetuoso anelito Romantico come un nemico giurato della fede. Al contrario, l'ansia panteista ed estetica di questi superbi autori inglesi rappresenta un formidabile trampolino di lancio verso il Divino, una feritoia inaspettata aperta sull'eterno.
+            </p>
+            
+            <div class="bg-zinc-800/40 border-l-4 border-gold-500 p-8 my-12 rounded-r-2xl shadow-xl">
+                <p class="font-serif text-2xl md:text-3xl text-white italic mb-4 leading-relaxed">
+                    "Dalla grandezza e bellezza delle creature, per analogia, si contempla il loro Autore."
+                </p>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-book-bible text-gold-500"></i>
+                    <p class="font-sans text-gold-500 text-sm tracking-widest uppercase font-semibold">Libro della Sapienza 13:5</p>
+                </div>
+            </div>
+
+            <p class="font-serif text-xl md:text-2xl text-zinc-300 leading-loose mb-8 text-justify">
+                I poeti inglesi, sfuggendo alle rigide e aride istituzioni umane del loro tempo, cercavano disperatamente un respiro vitale immensamente più ampio. Quando Lord Byron idolatrava le onde furenti di Portovenere, o Keats si smarriva nell'estasi della pura bellezza materiale, non stavano affatto spegnendo lo spirito, bensì lo stavano dilatando a dismisura. Il loro unico e meraviglioso "errore" fu un eccesso di stupore, uno straripamento di meraviglia che li portò talvolta a scambiare il riflesso fuggente per la Fonte primigenia. La Rivelazione cristiana non si palesa sui nostri passi per condannare questa loro immensa sete di infinito, ma vi si affianca dolcemente per sussurrare che quella Forza Invisibile e tremenda, che essi cercavano nei venti e maree, possiede in verità un Volto luminoso, un Nome pronunciabile e un cuore personale supremamente capace di amare.
+            </p>
+        </div>
+    </section>
+
+    <section id="mappa" class="py-24 bg-zinc-900 border-t border-zinc-800 relative">
+        <div class="max-w-6xl mx-auto px-6 reveal">
+            <div class="text-center mb-16">
+                <p class="font-sans text-sky-400 uppercase tracking-[0.2em] text-xs mb-3">I Luoghi dell'Anima</p>
+                <h2 class="font-display text-4xl md:text-5xl text-white mb-4">Le Coordinate del Viaggio</h2>
+                <p class="font-serif text-xl text-zinc-400 italic">I tre luoghi fisici che incarnano le tensioni dello spirito.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-dark-900 rounded-3xl overflow-hidden border border-zinc-800 group relative">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Bocca_di_Magra.JPG" alt="Vista su Bocca di Magra" class="img-cover group-hover:scale-105 transition-transform duration-700 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent"></div>
+                    </div>
+                    <div class="p-8 relative -mt-16">
+                        <div class="flex justify-between items-end mb-4">
+                            <div class="w-14 h-14 bg-dark-900 border border-gold-500 text-gold-500 rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-church"></i></div>
+                            <a href="https://maps.google.com/?q=Monastero+Santa+Croce+Bocca+di+Magra" target="_blank" class="btn-maps"><i class="fa-solid fa-location-dot"></i> Maps</a>
+                        </div>
+                        <h4 class="font-display text-2xl text-white mb-3">Bocca di Magra</h4>
+                        <p class="font-serif text-lg text-zinc-300 leading-relaxed text-justify">Il Monastero Santa Croce. Dove il fiume incontra placidamente il mare, il monachesimo custodisce la quiete della fede ortodossa. Il porto sicuro da cui partire, dove la vastità del Creato viene pacificata nel mistero dell'Eucaristia.</p>
+                    </div>
+                </div>
+
+                <div class="bg-dark-900 rounded-3xl overflow-hidden border border-zinc-800 group relative">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Chiesa_San_Pietro_Porto_Venere.jpg" alt="Chiesa di San Pietro a Portovenere" class="img-cover group-hover:scale-105 transition-transform duration-700 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent"></div>
+                    </div>
+                    <div class="p-8 relative -mt-16">
+                        <div class="flex justify-between items-end mb-4">
+                            <div class="w-14 h-14 bg-dark-900 border border-sky-400 text-sky-400 rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-water"></i></div>
+                            <a href="https://maps.google.com/?q=Grotta+di+Byron+Portovenere" target="_blank" class="btn-maps"><i class="fa-solid fa-location-dot"></i> Maps</a>
+                        </div>
+                        <h4 class="font-display text-2xl text-white mb-3">Portovenere</h4>
+                        <p class="font-serif text-lg text-zinc-300 leading-relaxed text-justify">Le scogliere nere e affilate si scontrano con le onde. Lo scenario del dramma byroniano: la solida architettura del dogma (San Pietro) che osserva dall'alto l'incontenibile e caotica potenza della natura selvaggia.</p>
+                    </div>
+                </div>
+
+                <div class="bg-dark-900 rounded-3xl overflow-hidden border border-zinc-800 group relative">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/%22Villa_Magni%2C_ultima_dimora_di_P.B.Shelley_%22.jpg" alt="Villa Magni a San Terenzo" class="img-cover group-hover:scale-105 transition-transform duration-700 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent"></div>
+                    </div>
+                    <div class="p-8 relative -mt-16">
+                        <div class="flex justify-between items-end mb-4">
+                            <div class="w-14 h-14 bg-dark-900 border border-zinc-300 text-zinc-300 rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-wind"></i></div>
+                            <a href="https://maps.google.com/?q=Villa+Magni+San+Terenzo" target="_blank" class="btn-maps"><i class="fa-solid fa-location-dot"></i> Maps</a>
+                        </div>
+                        <h4 class="font-display text-2xl text-white mb-3">San Terenzo</h4>
+                        <p class="font-serif text-lg text-zinc-300 leading-relaxed text-justify">Davanti all'elegante porticato bianco di Villa Magni, lambito all'epoca direttamente dalle acque del golfo, Shelley elaborò le sue speculazioni. Il mare sereno ma fatalmente traditore simboleggia l'eterna tentazione panteista.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="poeti" class="py-24 bg-dark-900 border-t border-zinc-800">
+        <div class="max-w-6xl mx-auto px-6">
+            
+            <div class="text-center mb-24 reveal">
+                <p class="font-sans text-gold-500 uppercase tracking-[0.2em] text-xs mb-3">Anthology & Theology</p>
+                <h2 class="font-display text-5xl md:text-6xl text-white mb-6">I Cercatori d'Infinito</h2>
+                <p class="font-serif text-2xl text-zinc-400 italic max-w-3xl mx-auto leading-relaxed">
+                    Tre voci, tre ritratti e un'immersione profonda nei testi originali.
+                </p>
+            </div>
+
+            <div class="mb-32 reveal">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-10 mb-12">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Lord_Byron_in_Albanian_dress.jpg" alt="Ritratto storico di Lord Byron" class="poet-portrait shrink-0">
+                    <div class="text-center md:text-left">
+                        <p class="font-sans text-sky-400 text-xs tracking-[0.2em] uppercase mb-2">Grotta dell'Arpaia, Portovenere</p>
+                        <h3 class="font-display text-4xl md:text-5xl text-white mb-2">Lord Byron</h3>
+                        <p class="font-serif text-zinc-400 text-xl mb-4">(Londra, 1788 – Missolungi, 1824)</p>
+                        <p class="font-serif text-xl text-zinc-300 leading-loose text-justify">
+                            Aristocratico, fiero ribelle e in perenne esilio volontario dall'Inghilterra, George Gordon Byron crebbe oppresso fin dalla prima infanzia dall'oscura dottrina calvinista di un Dio inteso unicamente come severo giudice predestinante. Nelle onde selvagge che si infrangono brutalmente contro le scogliere sotto l'antica Chiesa di San Pietro a Portovenere, il poeta non compie un banale atto di superbia atea. Egli esprime il desiderio bruciante e disperato di affidarsi a un'immensità che, pur minacciosa, sente paradossalmente più vera e pura delle asfissianti istituzioni umane. Il suo celebre titanismo non è altro che l'armatura splendente e tragica di un cuore alla disperata ricerca di uno spazio in cui poter respirare la Divinità senza catene. La celeberrima invocazione all'Oceano contenuta nel <em>Childe Harold's Pilgrimage</em> si eleva dunque come la preghiera immensa di un'anima che rifiuta la meschinità della misura umana per consegnarsi totalmente al mistero assoluto della Creazione.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="anthology-box p-6 md:p-12">
+                    <div class="text-center mb-10 border-b border-zinc-700/50 pb-6">
+                        <h4 class="font-display text-3xl text-gold-500 mb-2">Childe Harold's Pilgrimage</h4>
+                        <p class="font-serif text-xl text-zinc-400 italic">Canto IV, St. 178-183 (L'Oceano come purificazione)</p>
+                    </div>
+                    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16">
+                        <div>
+                            <p class="font-sans text-[11px] font-bold text-sky-400 uppercase tracking-widest mb-6 border-b border-zinc-700/50 pb-2"><i class="fa-solid fa-book-open mr-2"></i> English Original</p>
+                            <p class="font-serif poem-text text-xl text-white italic">
+                                There is a pleasure in the pathless woods,
+                                There is a rapture on the lonely shore,
+                                There is society, where none intrudes,
+                                By the deep Sea, and music in its roar:
+                                I love not Man the less, but Nature more,
+                                From these our interviews, in which I steal
+                                From all I may be, or have been before,
+                                To mingle with the Universe, and feel
+                                What I can ne'er express, yet cannot all conceal.
+                                
+                                Roll on, thou deep and dark blue Ocean—roll!
+                                Ten thousand fleets sweep over thee in vain;
+                                Man marks the earth with ruin—his control
+                                Stops with the shore;—upon the watery plain
+                                The wrecks are all thy deed...
+                                
+                                [...]
+                                
+                                Thou glorious mirror, where the Almighty's form
+                                Glasses itself in tempests; in all time,
+                                Calm or convulsed—in breeze, or gale, or storm,
+                                Icing the pole, or in the torrid clime
+                                Dark-heaving;—boundless, endless, and sublime—
+                                The image of Eternity—the throne
+                                Of the Invisible...
+                            </p>
+                        </div>
+                        <div>
+                            <p class="font-sans text-[11px] font-bold text-gold-500 uppercase tracking-widest mb-6 border-b border-gold-500/30 pb-2"><i class="fa-solid fa-language mr-2"></i> Traduzione Italiana</p>
+                            <p class="font-serif poem-text text-xl text-zinc-300">
+                                Vi è un piacere incolmabile nei boschi senza sentiero,
+                                Vi è un'estasi sacra sulla spiaggia solitaria,
+                                Vi è una compagnia perfetta, dove nessuno si intromette,
+                                Presso il mare profondo, e una musica sinfonica nel suo fragore:
+                                Non è che io ami l'uomo di meno, ma amo la Natura di più,
+                                In virtù di questi nostri colloqui, in cui mi sottraggo
+                                A tutto ciò che posso essere, o sono stato prima nel dolore,
+                                Per fondermi misticamente con l'Universo, e sentire
+                                Ciò che a parole non potrò mai esprimere, eppur non posso del tutto celare.
+                                
+                                Onda su onda, tu profondo e scuro Oceano azzurro, scorri incessante!
+                                Diecimila potenti flotte ti solcano del tutto invano;
+                                L'uomo segna la terra con la brutale rovina — ma il suo dominio
+                                Si ferma inesorabilmente alla tua riva; sulla sconfinata pianura d'acqua
+                                I naufragi sono tutti opera esclusivamente tua...
+                                
+                                [...]
+                                
+                                Tu glorioso specchio riflettente, in cui la forma stessa dell'Onnipotente
+                                Si riflette limpidamente nelle tempeste; in ogni tempo,
+                                Calmo o convulso — nella dolce brezza, nella burrasca, o nell'uragano,
+                                Mentre ghiacci il polo estremo, o nel clima torrido
+                                Ti sollevi scuro e minaccioso; senza confini, senza fine, e sublime —
+                                Tu sei l'immagine stessa dell'Eternità — il trono incontrastato
+                                Dell'Invisibile Creatore...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-32 reveal">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-10 mb-12">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/22/John_Keats_by_William_Hilton_circa_1822.jpg" alt="Ritratto storico di John Keats" class="poet-portrait shrink-0" style="border-color: #f59e0b;">
+                    <div class="text-center md:text-left">
+                        <p class="font-sans text-amber-500 text-xs tracking-[0.2em] uppercase mb-2">La sacralità della materia</p>
+                        <h3 class="font-display text-4xl md:text-5xl text-white mb-2">John Keats</h3>
+                        <p class="font-serif text-zinc-400 text-xl mb-4">(Londra, 1795 – Roma, 1821)</p>
+                        <p class="font-serif text-xl text-zinc-300 leading-loose text-justify">
+                            Falciato spietatamente dalla tubercolosi all'età di soli venticinque anni durante il suo viaggio terapeutico e disperato verso l'Italia, John Keats reagisce all'imminenza certa della fine trasformando il cosmo intero in un immenso tabernacolo. Egli codifica e adotta un registro linguistico esplicitamente teologico e ascetico — evocando l'Eremita solitario e il compito sacerdotale di pura abluzione — per descrivere devotamente il cosmo inorganico. La sua teologia poetica non è affatto proiettata in un paradiso distante e disincarnato, ma è profondamente radicata nell'incarnazione dell'istante presente. La stella costante e le fredde acque purificatrici sono per lui i maestri silenziosi di un'immortalità che desidera disperatamente fondere col calore dell'amore umano. Il suo amore totalizzante per la bellezza fisica costituisce una profetica e struggente apologia poetica dell'Incarnazione.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="anthology-box p-6 md:p-12">
+                    <div class="text-center mb-10 border-b border-zinc-700/50 pb-6">
+                        <h4 class="font-display text-3xl text-gold-500 mb-2">Bright Star!</h4>
+                        <p class="font-serif text-xl text-zinc-400 italic">L'ultimo sonetto, la liturgia dei sensi</p>
+                    </div>
+                    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16">
+                        <div>
+                            <p class="font-sans text-[11px] font-bold text-sky-400 uppercase tracking-widest mb-6 border-b border-zinc-700/50 pb-2"><i class="fa-solid fa-book-open mr-2"></i> English Original</p>
+                            <p class="font-serif poem-text text-xl text-white italic">
+                                Bright star, would I were stedfast as thou art—
+                                Not in lone splendour hung aloft the night
+                                And watching, with eternal lids apart,
+                                Like nature's patient, sleepless Eremite,
+                                The moving waters at their priestlike task
+                                Of pure ablution round earth's human shores,
+                                Or gazing on the new soft-fallen mask
+                                Of snow upon the mountains and the moors—
+                                No—yet still stedfast, still unchangeable,
+                                Pillowed upon my fair love's ripening breast,
+                                To feel for ever its soft fall and swell,
+                                Awake for ever in a sweet unrest,
+                                Still, still to hear her tender-taken breath,
+                                And so live ever—or else swoon to death.
+                            </p>
+                        </div>
+                        <div>
+                            <p class="font-sans text-[11px] font-bold text-gold-500 uppercase tracking-widest mb-6 border-b border-gold-500/30 pb-2"><i class="fa-solid fa-language mr-2"></i> Traduzione Italiana</p>
+                            <p class="font-serif poem-text text-xl text-zinc-300">
+                                Stella lucente, oh fossi io saldo e costante come lo sei tu —
+                                Non sospeso nell'alta notte in un gelido e solitario splendore,
+                                A vegliare perennemente dall'alto, con le palpebre eternamente dischiuse,
+                                Come un austero Eremita della natura, paziente e insonne,
+                                Le acque oscure in movimento nel loro incessante compito sacerdotale
+                                Di purissima abluzione intorno ai lidi impuri e umani della terra,
+                                O a fissare la maschera immacolata di neve, da poco e dolcemente caduta
+                                Sulle aspre montagne e sulle vaste brughiere —
+                                No — eppure rimanendo sempre costante, sempre inalterabile al tempo,
+                                Posato come su un morbido guanciale sul seno fiorente del mio dolce amore,
+                                Per avvertire per l'eternità il suo tenero abbassarsi e sollevarsi,
+                                Rimanendo desti per sempre in una dolcissima e vibrante inquietudine,
+                                Immobili, per ascoltare all'infinito il suo respiro delicatamente attratto,
+                                E in questo modo vivere in eterno — o altrimenti sprofondare e svenire nella morte.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-10 mb-12">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Percy_Bysshe_Shelley_by_Alfred_Clint.jpg" alt="Ritratto storico di Percy Bysshe Shelley" class="poet-portrait shrink-0" style="border-color: #ef4444;">
+                    <div class="text-center md:text-left">
+                        <p class="font-sans text-red-400 text-xs tracking-[0.2em] uppercase mb-2">Villa Magni, San Terenzo</p>
+                        <h3 class="font-display text-4xl md:text-5xl text-white mb-2">Percy B. Shelley</h3>
+                        <p class="font-serif text-zinc-400 text-xl mb-4">(Field Place, 1792 – Golfo della Spezia, 1822)</p>
+                        <p class="font-serif text-xl text-zinc-300 leading-loose text-justify">
+                            Clamorosamente e pubblicamente espulso dall'Università di Oxford per le sue tempestose tesi in difesa dell'ateismo razionalista, Percy Bysshe Shelley custodiva in profonda realtà, sotto l'esibita corazza del filosofo radicale, un'anima dolorosamente mistica. Affacciato sulle acque tranquille del Golfo Spezzino — che di lì a poco divennero tragicamente la tomba del suo corpo all'età di soli trent'anni —, egli percepiva in modo dirompente che l'universo non era un ingranaggio svuotato da Dio, ma l'emanazione vibrante di un ineffabile Potere Segreto (l'<em>Unseen Power</em>). Il suo panteismo struggente, descritto magnificamente nell'allegoria del pesce attratto dalla torcia fiammeggiante in una delle sue ultimissime composizioni, rappresenta lo sforzo vertiginoso di un giovane pellegrino che brama l'assoluto, rincorrendone i riflessi incostanti nella bellezza del mare aperto, fino ad esserne fatidicamente e letteralmente consumato.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="anthology-box p-6 md:p-12">
+                    <div class="text-center mb-10 border-b border-zinc-700/50 pb-6">
+                        <h4 class="font-display text-3xl text-gold-500 mb-2">Lines Written in the Bay of Lerici</h4>
+                        <p class="font-serif text-xl text-zinc-400 italic">L'allegoria del Potere Invisibile e dell'inganno mortale</p>
+                    </div>
+                    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16">
+                        <div>
+                            <p class="font-sans text-[11px] font-bold text-sky-400 uppercase tracking-widest mb-6 border-b border-zinc-700/50 pb-2"><i class="fa-solid fa-book-open mr-2"></i> English Original</p>
+                            <p class="font-serif poem-text text-xl text-white italic">
+                                She left me, and I staid alone
+                                Thinking over every tone
+                                Which, though silent to the ear,
+                                The enchanted heart could hear,
+                                Like notes which die when born, but still
+                                Haunt the echoes of the hill;
+                                
+                                [...]
+                                
+                                And the fisher with his lamp
+                                And spear about the low rocks damp
+                                Crept, and struck the fish which came
+                                To worship the delusive flame.
+                                Too happy they, whose pleasure sought
+                                Extinguishes all sense and thought
+                                Of the regret that pleasure leaves,
+                                Destroying life alone, not peace!
+                            </p>
+                        </div>
+                        <div>
+                            <p class="font-sans text-[11px] font-bold text-gold-500 uppercase tracking-widest mb-6 border-b border-gold-500/30 pb-2"><i class="fa-solid fa-language mr-2"></i> Traduzione Italiana</p>
+                            <p class="font-serif poem-text text-xl text-zinc-300">
+                                Lei mi lasciò, ed io rimasi profondamente e immensamente solo
+                                A ripensare ossessivamente a ogni singola nota
+                                Che, sebbene ormai silenziosa all'orecchio fisico,
+                                Il cuore incantato poteva udire chiaramente pulsare,
+                                Come magiche note che muoiono nell'istante in cui nascono, ma che ancora
+                                Infestano come spettri gli echi silenziosi della collina;
+                                
+                                [...]
+                                
+                                E il cupo pescatore munito della sua debole lampada
+                                E dell'aguzza fiocina lungo le basse e umide rocce
+                                Strisciava silenzioso, e colpiva a morte il pesce che fiducioso si avvicinava
+                                Per adorare estasiato quella fiamma illusoria e ingannatrice.
+                                Oh, fin troppo felici loro [gli animali ignari], il cui piacere avidamente ricercato
+                                Riesce a estinguere ogni senso di colpa e ogni fosco pensiero
+                                Del cupo rimpianto che il piacere mondano inevitabilmente lascia dietro di sé,
+                                Distruggendo in loro soltanto la vita corporale biologica, ma non la pace inestimabile dell'anima!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="sintesi" class="py-24 bg-dark-900 border-t border-zinc-800">
+        <div class="max-w-6xl mx-auto px-6 reveal">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl md:text-5xl text-gold-500 mb-6">Mappa del Desiderio Astratto</h2>
+                <p class="font-serif text-xl text-zinc-300 italic max-w-3xl mx-auto leading-relaxed">
+                    Visualizzare i vettori e l'estensione della nostalgia romantica rispetto al nucleo della Rivelazione.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <p class="font-serif text-xl text-zinc-300 leading-loose text-justify mb-8">
+                        L'analisi grafica illustra visivamente come l'immenso desiderio dell'infinito, connaturato profondamente nel cuore dell'uomo, si espanda in radicali direzioni filosofiche partendo dal nucleo vitale e bilanciato della Rivelazione cristiana (che si posiziona idealmente allo zero del grafico centrale). 
+                    </p>
+                    <p class="font-serif text-xl text-zinc-300 leading-loose text-justify">
+                        Nessuna di queste magnifiche e tormentate fughe letterarie costituisce tuttavia un vicolo cieco. La sfida solitaria di Byron, l'immersione passionale di Keats e il puro slancio cosmico di Shelley rappresentano i vettori incrociati di una medesima, irriducibile nostalgia originaria per la Casa del Padre. La solida fede della Chiesa non si erge come un muro per sminuire o recidere queste intuizioni poetiche sublimi, ma si pone al centro della storia umana per accoglierle integralmente, svelando che il Sublime, ricercato invano nel mormorio impersonale del mare o nella fredda luce delle stelle, possiede da sempre il Volto trinitario, caldo e personale del Verbo Incarnato.
+                    </p>
+                </div>
+                <div class="order-1 lg:order-2 bg-zinc-900/50 p-6 md:p-10 rounded-3xl border border-zinc-800">
+                    <div class="chart-wrapper">
+                        <canvas id="theologicalRadarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programma" class="py-24 bg-zinc-900 border-t border-zinc-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/3/3a/Chiesa_San_Pietro_Porto_Venere.jpg')] bg-cover bg-center opacity-5"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-zinc-900 via-zinc-900/95 to-dark-900"></div>
+
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-20 reveal">
+                <p class="font-sans text-sky-400 uppercase tracking-[0.2em] text-xs mb-3">Organizzazione</p>
+                <h2 class="font-display text-4xl md:text-5xl text-white mb-6">Tabella di Marcia</h2>
+                <div class="w-24 h-px bg-gold-500 mx-auto"></div>
+            </div>
+
+            <div class="reveal reveal-delay-1">
+                <h3 class="font-display text-3xl text-gold-500 mb-6 border-b border-zinc-700/50 pb-4">Sabato 7 Marzo: Arrivo e Riviera di Levante</h3>
+                <div class="logistics-table-container">
+                    <table class="logistics-table">
+                        <thead>
+                            <tr>
+                                <th>Orario</th>
+                                <th>Attività</th>
+                                <th>Mezzo</th>
+                                <th>Durata</th>
+                                <th>Dettagli e Indirizzo</th>
+                                <th>Link Utili & Mappe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>07:00</td>
+                                <td>Partenza</td>
+                                <td>Pullman</td>
+                                <td>4 ore</td>
+                                <td>Partenza dal Liceo Calini</td>
+                                <td><a href="https://www.google.com/maps/dir/Liceo+scientifico+statale+Annibale+Calini,+Via+Monte+Suello,+2,+25128+Brescia+BS/Parcheggio+-+Zona+P1,+Via+Olivo,+65,+19025+Portovenere+SP/@44.7997918,9.1214223,211507m/data=!3m2!1e3!4b1!4m14!4m13!1m5!1m1!1s0x4781764137937539:0x6140eb3b8ec6329!2m2!1d10.2214414!2d45.5474431!1m5!1m1!1s0x12d4fd274bb29cf9:0x47efa55752f96285!2m2!1d9.83706!2d44.05268!3e0?entry=ttu&g_ep=EgoyMDI2MDQxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank"><i class="fa-solid fa-map-pin mr-1"></i> Mappa Arrivo Portovenere</a></td>
+                            </tr>
+                            <tr>
+                                <td>11:00</td>
+                                <td>Arrivo</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Parcheggio Zona P1, Via Olivo 65, Portovenere</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>11:00 - 13:30</td>
+                                <td>Visite Culturali</td>
+                                <td>A piedi</td>
+                                <td>-</td>
+                                <td>Chiesa di San Pietro, Grotta di Lord Byron, Chiesa di San Lorenzo, Castello Doria</td>
+                                <td><a href="https://www.visitportovenere.com/it" target="_blank"><i class="fa-solid fa-globe mr-1"></i> Visit Portovenere</a></td>
+                            </tr>
+                            <tr>
+                                <td>13:30</td>
+                                <td>Pausa Pranzo</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Spiaggia di Arenella (Via Olivo, 129). Pranzo al sacco.</td>
+                                <td><a href="https://www.google.com/maps/dir/Parcheggio+-+Zona+P1,+Via+Olivo,+65,+19025+Portovenere+SP/San+Pietro+Church,+Piazza+Lazzaro+Spallanzani,+19121+Porto+Venere+SP/Grotta+di+Lord+Byron,+SP530,+92,+19025+Portovenere+SP/Chiesa+di+San+Lorenzo,+19025+Porto+Venere+SP/Castello+Doria,+Via+Calata+Doria,+19025+Porto+Venere+SP/Spiaggia+di+Arenella,+Via+Olivo,+129,+19025+Portovenere+SP/@44.0518198,9.8299733,1674m/data=!3m2!1e3!4b1!4m38!4m37!1m5!1m1!1s0x12d4fd274bb29cf9:0x47efa55752f96285!2m2!1d9.83706!2d44.05268!1m5!1m1!1s0x12d4ff00304d3d43:0xe7c183c2b872ce5a!2m2!1d9.83237!2d44.0483114!1m5!1m1!1s0x12d4fea046887fbb:0xa4d8c55d9642bf8e!2m2!1d9.8325229!2d44.0502139!1m5!1m1!1s0x12d4fd002fd81045:0x6545fe5cc012a02c!2m2!1d9.8335915!2d44.050719!1m5!1m1!1s0x12d4ff0010e0f54f:0xeb0cde79dafb65b8!2m2!1d9.8327432!2d44.0512207!1m5!1m1!1s0x12d4fc21a03b860d:0xcc1de79ce5621ca3!2m2!1d9.8378978!2d44.055284!3e2?entry=ttu&g_ep=EgoyMDI2MDQxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank"><i class="fa-solid fa-map-pin mr-1"></i> Mappa Spostamento</a></td>
+                            </tr>
+                            <tr>
+                                <td>15:30</td>
+                                <td>Trasferimento</td>
+                                <td>A piedi</td>
+                                <td>45 min</td>
+                                <td>Trasferimento verso Villa Varignano Vecchio</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>16:15</td>
+                                <td>Visita Culturale</td>
+                                <td>A piedi</td>
+                                <td>-</td>
+                                <td>Villa romana del Varignano Vecchio, Le Grazie</td>
+                                <td><a href="https://villaromanavarignano.cultura.gov.it/" target="_blank"><i class="fa-solid fa-globe mr-1"></i> Villa del Varignano</a></td>
+                            </tr>
+                            <tr>
+                                <td>17:45</td>
+                                <td>Sosta</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Le Grazie</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>18:00</td>
+                                <td>Trasferimento</td>
+                                <td>Pullman</td>
+                                <td>-</td>
+                                <td>Partenza da Le Grazie verso Bocca di Magra</td>
+                                <td>
+                                    <a href="https://www.google.com/maps/dir/Spiaggia+di+Arenella,+Via+Olivo,+129,+19025+Portovenere+SP/Villa+romana+del+Varignano+Vecchio,+Via+Varignano+Vecchio,+19025+Le+Grazie+SP/Le+Grazie,+19025+SP/@44.0605469,9.8337948,1673m/data=!3m2!1e3!4b1!4m20!4m19!1m5!1m1!1s0x12d4fc21a03b860d:0xcc1de79ce5621ca3!2m2!1d9.8378978!2d44.055284!1m5!1m1!1s0x12d4fc3ea4804859:0x17430ed2b0b79bdf!2m2!1d9.8402353!2d44.06442!1m5!1m1!1s0x12d4fc3c1dde576d:0x9cfb2e005364b193!2m2!1d9.8340055!2d44.0657867!3e2?entry=ttu&g_ep=EgoyMDI2MDQxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="block"><i class="fa-solid fa-map-pin mr-1"></i> Mappa Partenza</a>
+                                    <a href="https://www.google.com/maps/dir/Le+Grazie,+19025+SP/Monastero+Santa+Croce+Bocca+di+Magra+Ameglia+(SP)+-+ALBERGO+Casa+per+FERIE+per+RITIRI+SPIRITUALI+con+ampio+parco+NATURALE,+Via+Santa+Croce,+30,+19030+Bocca+di+Magra+SP/@44.0895983,9.8538058,13381m/data=!3m2!1e3!4b1!4m14!4m13!1m5!1m1!1s0x12d4fc3c1dde576d:0x9cfb2e005364b193!2m2!1d9.8340055!2d44.0657867!1m5!1m1!1s0x12d503fabd971115:0x2a76abb2f4e63232!2m2!1d9.9821673!2d44.043491!3e0?entry=ttu&g_ep=EgoyMDI2MDQxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="block mt-1"><i class="fa-solid fa-map-pin mr-1"></i> Mappa Arrivo</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="reveal reveal-delay-1">
+                <h3 class="font-display text-3xl text-gold-500 mb-6 border-b border-zinc-700/50 pb-4">Domenica 8 Marzo: Le Cinque Terre e Lerici</h3>
+                <div class="logistics-table-container">
+                    <table class="logistics-table">
+                        <thead>
+                            <tr>
+                                <th>Orario</th>
+                                <th>Attività</th>
+                                <th>Mezzo</th>
+                                <th>Durata</th>
+                                <th>Dettagli e Indirizzo</th>
+                                <th>Link Utili & Mappe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>09:00 - 10:00</td>
+                                <td>Trasferimento</td>
+                                <td>Pullman / Treno</td>
+                                <td>1 ora</td>
+                                <td>Da Bocca di Magra a Riomaggiore</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>10:00</td>
+                                <td>Escursione</td>
+                                <td>A piedi</td>
+                                <td>35 min</td>
+                                <td>Via dell’Amore fino a Manarola</td>
+                                <td><a href="https://www.viadellamore.info/en" target="_blank"><i class="fa-solid fa-globe mr-1"></i> Via dell'Amore</a></td>
+                            </tr>
+                            <tr>
+                                <td>Mattina</td>
+                                <td>Rientro</td>
+                                <td>Treno</td>
+                                <td>-</td>
+                                <td>Rientro in treno a Riomaggiore</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>12:45</td>
+                                <td>Trasferimento</td>
+                                <td>Pullman</td>
+                                <td>37 min</td>
+                                <td>Partenza per Lerici</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>13:30</td>
+                                <td>Pranzo</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Pranzo libero a Lerici</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Pomeriggio</td>
+                                <td>Relax</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Sosta panoramica presso Venere Azzurra</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>16:00</td>
+                                <td>Visita</td>
+                                <td>A piedi</td>
+                                <td>-</td>
+                                <td>Torre di San Rocco, Largo G. Marconi, Lerici</td>
+                                <td><a href="https://lericicoast.it/" target="_blank"><i class="fa-solid fa-globe mr-1"></i> Lerici Coast</a></td>
+                            </tr>
+                            <tr>
+                                <td>17:00</td>
+                                <td>Visita</td>
+                                <td>A piedi</td>
+                                <td>-</td>
+                                <td>Chiesa S. Francesco d'Assisi, Lerici</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>18:30</td>
+                                <td>Trasferimento</td>
+                                <td>Pullman</td>
+                                <td>-</td>
+                                <td>Ripartenza per Bocca di Magra</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="reveal reveal-delay-1">
+                <h3 class="font-display text-3xl text-gold-500 mb-6 border-b border-zinc-700/50 pb-4">Lunedì 9 Marzo: Trekking Panoramico e Castello</h3>
+                <div class="logistics-table-container">
+                    <table class="logistics-table">
+                        <thead>
+                            <tr>
+                                <th>Orario</th>
+                                <th>Attività</th>
+                                <th>Mezzo</th>
+                                <th>Durata</th>
+                                <th>Dettagli e Indirizzo</th>
+                                <th>Link Utili & Mappe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>08:15</td>
+                                <td>Trasferimento</td>
+                                <td>Pullman</td>
+                                <td>1 ora</td>
+                                <td>Da Bocca di Magra al Parcheggio La Rocchetta (Lerici)</td>
+                                <td><a href="https://www.google.com/maps/dir/Bocca+di+Magra,+19030+SP/44.074637,9.936469/@44.075097,9.9360547,264m/data=!3m1!1e3!4m8!4m7!1m5!1m1!1s0x12d503f04836f70f:0x62ac39620c9697e0!2m2!1d9.9762607!2d44.0536506!1m0?entry=ttu&g_ep=EgoyMDI2MDQxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank"><i class="fa-solid fa-map-pin mr-1"></i> Mappa Trasferimento</a></td>
+                            </tr>
+                            <tr>
+                                <td>09:15</td>
+                                <td>Trekking</td>
+                                <td>A piedi</td>
+                                <td>-</td>
+                                <td>Parco P. Shelley: percorso CAI 411 (1,9 km) verso la Pietraia</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>11:15</td>
+                                <td>Trasferimento</td>
+                                <td>Pullman</td>
+                                <td>15 min</td>
+                                <td>Spostamento verso il Castello di Lerici</td>
+                                <td><a href="https://www.google.com/maps/dir/44.074637,9.936469/Castello+San+Giorgio+di+Lerici,+P.za+S.Giorgio,+19032+Lerici+SP/@44.0788917,9.9116846,3346m/data=!3m2!1e3!4b1!4m8!4m7!1m0!1m5!1m1!1s0x12d5030c6dbb0a3b:0x793ce45e9eeb0074!2m2!1d9.907488!2d44.0729533?entry=ttu&g_ep=EgoyMDI2MDQxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank"><i class="fa-solid fa-map-pin mr-1"></i> Mappa Percorso</a></td>
+                            </tr>
+                            <tr>
+                                <td>11:30</td>
+                                <td>Visita</td>
+                                <td>A piedi</td>
+                                <td>-</td>
+                                <td>Esplorazione del Castello di Lerici</td>
+                                <td><a href="https://lericicoast.it/" target="_blank"><i class="fa-solid fa-globe mr-1"></i> Lerici Coast</a></td>
+                            </tr>
+                            <tr>
+                                <td>13:00</td>
+                                <td>Pranzo</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Pranzo libero in zona spiaggia</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>14:30</td>
+                                <td>Sosta</td>
+                                <td>A piedi</td>
+                                <td>-</td>
+                                <td>Passaggio riflessivo davanti a Villa Magni</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>15:00</td>
+                                <td>Partenza</td>
+                                <td>Pullman</td>
+                                <td>-</td>
+                                <td>Ripartenza definitiva per il rientro a Brescia</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="mt-10 bg-dark-900/50 backdrop-blur-sm p-8 md:p-12 rounded-3xl border border-zinc-700 shadow-xl reveal">
+                <h3 class="font-display text-3xl text-white mb-10 border-b border-zinc-700/50 pb-4">Dettagli Economici e Organizzativi</h3>
+                
+                <div class="space-y-8">
+                    <div class="border-l-2 border-gold-500/50 pl-6">
+                        <h4 class="font-sans text-gold-400 uppercase tracking-widest text-sm font-bold mb-3">Costi di Accesso e Trasporti</h4>
+                        <p class="font-serif text-xl text-zinc-300 leading-relaxed text-justify">
+                            Il biglietto agevolato per esplorare il Castello Doria ammonta a 3 euro per gli studenti. Lo spostamento in treno lungo il suggestivo tratto La Spezia-Riomaggiore prevede un costo andata e ritorno di 5,70 euro, mentre l'accesso agli scavi della Villa Romana del Varignano richiede un contributo di 2 euro, riservato esclusivamente ai maggiorenni.
+                        </p>
+                    </div>
+
+                    <div class="border-l-2 border-sky-500/50 pl-6">
+                        <h4 class="font-sans text-sky-400 uppercase tracking-widest text-sm font-bold mb-3">Gestione dei Pasti</h4>
+                        <p class="font-serif text-xl text-zinc-300 leading-relaxed text-justify">
+                            Considerata la natura dinamica del sabato, l'unico pasto da procurarsi preventivamente da casa resta il pranzo al sacco del primo giorno. Il Monastero Santa Croce provvederà a coprire le necessità della cena e della prima colazione, lasciando poi totale libertà per i pranzi successivi nei borghi visitati.
+                        </p>
+                    </div>
+
+                    <div class="border-l-2 border-zinc-400/50 pl-6">
+                        <h4 class="font-sans text-zinc-300 uppercase tracking-widest text-sm font-bold mb-3">Equipaggiamento Consigliato</h4>
+                        <p class="font-serif text-xl text-zinc-300 leading-relaxed text-justify">
+                            Si invita ogni partecipante a dotarsi di scarpe adatte al cammino, indispensabili per vivere le escursioni naturalistiche in assoluta comodità e sicurezza.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="pt-24 pb-12 bg-dark-900 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-sky-900/10 blur-[150px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-3xl mx-auto px-6 relative z-10 reveal">
+            <i class="fa-solid fa-dove text-5xl text-gold-500 mb-10 opacity-80"></i>
+            <p class="font-serif text-3xl md:text-4xl text-white italic mb-12 leading-relaxed">
+                "Ci hai fatti per Te, o Signore,<br>e il nostro cuore è irrequieto<br>finché non trova finalmente pace in Te."
+            </p>
+            <p class="font-display text-gold-500 tracking-[0.2em] uppercase text-sm mb-24">— Sant'Agostino d'Ippona, Confessioni (I, 1, 1)</p>
+            
+            <div class="w-24 h-px bg-zinc-700 mx-auto mb-12"></div>
+            
+            <p class="font-sans text-zinc-500 text-[10px] md:text-xs tracking-[0.2em] leading-loose uppercase">
+                Liceo Scientifico "A. Calini" • Brescia<br>
+                Progetto Interdisciplinare Lingua Inglese - Religione Cattolica<br>
+                Dispensa digitale ad uso interno delle Classi 5C e 5G • 2026
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Animazioni Scroll ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.05, rootMargin: "0px 0px -50px 0px" });
+
+        revealElements.forEach(el => revealOnScroll.observe(el));
+
+        // --- Navbar Background Logic ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-glass-strong');
+                navbar.classList.remove('bg-transparent', 'border-transparent');
+            } else {
+                navbar.classList.remove('bg-glass-strong');
+                navbar.classList.add('bg-transparent', 'border-transparent');
+            }
+        });
+
+        // --- Chart.js (Radar Chart) ---
+        const ctx = document.getElementById('theologicalRadarChart').getContext('2d');
+        Chart.defaults.color = '#a1a1aa'; // zinc-400
+        Chart.defaults.font.family = "'Inter', sans-serif";
+
+        const chartData = {
+            labels: [
+                'Attrazione per l\'Ignoto Invisibile',
+                'Ricerca Estrema di Libertà Assoluta',
+                'Desiderio Cosmico Panteista',
+                'Amore per la Bellezza della Materia',
+                'Distanza dal Dogma Istituzionale Cattolico'
+            ],
+            datasets: [
+                {
+                    label: 'Percy Bysshe Shelley',
+                    data: [9, 8, 10, 4, 10], 
+                    backgroundColor: 'rgba(212, 175, 55, 0.15)', // Gold
+                    borderColor: '#D4AF37', borderWidth: 2,
+                    pointBackgroundColor: '#D4AF37', pointRadius: 4, pointHoverRadius: 6
+                },
+                {
+                    label: 'Lord Byron',
+                    data: [7, 10, 7, 3, 8], 
+                    backgroundColor: 'rgba(56, 189, 248, 0.15)', // Sky 400
+                    borderColor: '#38bdf8', borderWidth: 2,
+                    pointBackgroundColor: '#38bdf8', pointRadius: 4, pointHoverRadius: 6
+                },
+                {
+                    label: 'John Keats',
+                    data: [8, 3, 5, 10, 5], 
+                    backgroundColor: 'rgba(245, 158, 11, 0.15)', // Amber
+                    borderColor: '#f59e0b', borderWidth: 2,
+                    pointBackgroundColor: '#f59e0b', pointRadius: 4, pointHoverRadius: 6
+                }
+            ]
+        };
+
+        const chartOptions = {
+            responsive: true, maintainAspectRatio: false,
+            scales: {
+                r: {
+                    angleLines: { color: 'rgba(255, 255, 255, 0.05)' },
+                    grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                    pointLabels: {
+                        font: { family: "'Inter', sans-serif", size: window.innerWidth < 768 ? 10 : 12, weight: '500' },
+                        color: '#d4d4d8' // zinc-300
+                    },
+                    ticks: { display: false, min: 0, max: 10 }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { color: '#f8fafc', usePointStyle: true, padding: window.innerWidth < 768 ? 20 : 30, boxWidth: 8, font: { size: 13, weight: '500' } }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(24, 24, 27, 0.95)', // zinc-900
+                    titleFont: { family: "'Cinzel', serif", size: 16 },
+                    bodyFont: { family: "'Inter', sans-serif", size: 14 },
+                    padding: 16, borderColor: '#D4AF37', borderWidth: 1, cornerRadius: 8,
+                    callbacks: {
+                        label: function(context) { return ` ${context.dataset.label}: Livello ${context.raw}/10`; }
+                    }
+                }
+            }
+        };
+
+        new Chart(ctx, { type: 'radar', data: chartData, options: chartOptions });
+    </script>
+</body>
+</html>
