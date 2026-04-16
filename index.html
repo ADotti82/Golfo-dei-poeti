@@ -101,15 +101,24 @@
         .logistics-table .action-link { color: #38bdf8; font-family: 'Inter', sans-serif; font-size: 0.85rem; transition: color 0.3s; }
         .logistics-table .action-link:hover { color: #7dd3fc; text-decoration: underline; }
 
-        /* Video Container Helper */
+        /* Video Section Styles */
+        .video-card {
+            background: rgba(24, 24, 27, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .video-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            border-radius: 1rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid rgba(212, 175, 55, 0.2);
         }
         .video-container iframe {
             position: absolute;
@@ -117,6 +126,7 @@
             left: 0;
             width: 100%;
             height: 100%;
+            border: 0;
         }
     </style>
 </head>
@@ -131,12 +141,12 @@
             <div class="hidden md:flex space-x-6 items-center">
                 <a href="#prologo" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Prologo</a>
                 <a href="#mappa" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Luoghi</a>
-                <a href="#poeti" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Poeti & Testi</a>
+                <a href="#poeti" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Poeti</a>
                 <a href="#visioni" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Visioni</a>
-                <a href="#programma" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Il Programma</a>
+                <a href="#programma" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Programma</a>
             </div>
             <div class="md:hidden flex space-x-4 overflow-x-auto no-scrollbar w-full ml-4">
-                <a href="#poeti" class="font-sans text-[10px] uppercase tracking-widest text-zinc-300 hover:text-gold-500 whitespace-nowrap">Testi</a>
+                <a href="#poeti" class="font-sans text-[10px] uppercase tracking-widest text-zinc-300 hover:text-gold-500 whitespace-nowrap">Poeti</a>
                 <a href="#visioni" class="font-sans text-[10px] uppercase tracking-widest text-zinc-300 hover:text-gold-500 whitespace-nowrap">Visioni</a>
                 <a href="#programma" class="font-sans text-[10px] uppercase tracking-widest text-zinc-300 hover:text-gold-500 whitespace-nowrap">Logistica</a>
             </div>
@@ -176,60 +186,416 @@
             <p class="font-serif text-xl md:text-2xl text-zinc-300 leading-loose drop-cap mb-8 text-justify">
                 Giungendo sui lidi liguri, la nostra mente potrebbe essere indotta a tracciare un confine netto, quasi una trincea militare, tra il silenzio rassicurante e ordinato della preghiera e le tempeste intellettuali che agitavano gli animi di Byron, Shelley e Keats lungo queste stesse identiche coste. Questo nuovo approdo segna l'evoluzione di un cammino triennale che ha già esplorato il senso del pellegrinaggio sotto diverse spoglie: se due anni fa il percorso si apriva con i Canterbury Tales, indagando il gesto fisico e granitico del mettersi in cammino verso la tomba di un santo, e lo scorso anno la Venezia di Shakespeare ci ha permesso di rintracciare i sentieri delle relazioni umane e tragiche, oggi ci addentriamo in un pellegrinaggio squisitamente esistenziale.
             </p>
+
+            <p class="font-serif text-xl md:text-2xl text-zinc-300 leading-loose mb-8 text-justify">
+                Ci muoviamo dalla contemplazione delle creature per riconoscere la presenza di un Creatore, immergendoci in quell'esperienza romantica dove la potenza della natura agisce come un fascino irresistibile che spinge, paradossalmente, ad abbandonare il materiale attraverso la materia stessa, cercando lo spirito che in essa è custodito. È un romanticismo che muove, spezza e affascina, elevando lo sguardo oltre l'immanenza verso una forza che richiama l'anima a superare i propri confini.
+            </p>
+
+            <div class="bg-zinc-800/40 border-l-4 border-gold-500 p-8 my-12 rounded-r-2xl shadow-xl">
+                <p class="font-serif text-2xl md:text-3xl text-white italic mb-4 leading-relaxed">
+                    "O mia colomba, che stai nelle fenditure della roccia, nei nascondigli dei dirupi, mostrami il tuo viso, fammi sentire la tua voce."
+                </p>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-book-bible text-gold-500"></i>
+                    <p class="font-sans text-gold-500 text-sm tracking-widest uppercase font-semibold">Cantico dei Cantici 2,14</p>
+                </div>
             </div>
+
+            <div class="bg-zinc-800/40 border-l-4 border-sky-400 p-8 my-12 rounded-r-2xl shadow-xl">
+                <p class="font-serif text-2xl md:text-3xl text-white italic mb-4 leading-relaxed">
+                    "sotto l'azzurro fitto / del cielo qualche uccello di mare se ne va; / né sosta mai: perché tutte le immagini / portano scritto: «più in là»."
+                </p>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-feather-pointed text-sky-400"></i>
+                    <p class="font-sans text-sky-400 text-sm tracking-widest uppercase font-semibold">Eugenio Montale, Maestrale</p>
+                </div>
+            </div>
+
+            <div class="bg-zinc-800/40 border-l-4 border-gold-500 p-8 my-12 rounded-r-2xl shadow-xl">
+                <p class="font-serif text-xl md:text-2xl text-white italic mb-4 leading-relaxed">
+                    "Ci fu un vento impetuoso e gagliardo da spaccare i monti e spezzare le rocce davanti al Signore, ma il Signore non era nel vento... Dopo il fuoco, il sussurro di una brezza leggera."
+                </p>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-book-bible text-gold-500"></i>
+                    <p class="font-sans text-gold-500 text-sm tracking-widest uppercase font-semibold">1 Re 19:11-12</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="visioni" class="py-24 bg-dark-900 border-t border-zinc-800">
+    <section id="mappa" class="py-24 bg-zinc-900 border-t border-zinc-800 relative">
+        <div class="max-w-6xl mx-auto px-6 reveal">
+            <div class="text-center mb-16">
+                <p class="font-sans text-sky-400 uppercase tracking-[0.2em] text-xs mb-3">I Luoghi dell'Anima</p>
+                <h2 class="font-display text-4xl md:text-5xl text-white mb-4">Le Coordinate del Viaggio</h2>
+                <p class="font-serif text-xl text-zinc-400 italic">I tre luoghi fisici che incarnano le tensioni dello spirito.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-dark-900 rounded-3xl overflow-hidden border border-zinc-800 group relative">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Bocca_di_Magra.JPG" alt="Vista su Bocca di Magra" class="img-cover group-hover:scale-105 transition-transform duration-700 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent"></div>
+                    </div>
+                    <div class="p-8 relative -mt-16">
+                        <div class="flex justify-between items-end mb-4">
+                            <div class="w-14 h-14 bg-dark-900 border border-gold-500 text-gold-500 rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-church"></i></div>
+                            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fa-solid fa-location-dot"></i> Maps</a>
+                        </div>
+                        <h4 class="font-display text-2xl text-white mb-3">Bocca di Magra</h4>
+                        <p class="font-serif text-lg text-zinc-300 leading-relaxed text-justify">Il Monastero Santa Croce. Dove il fiume incontra placidamente il mare. Il porto sicuro dove la vastità del Creato viene pacificata nel silenzio della preghiera.</p>
+                    </div>
+                </div>
+
+                <div class="bg-dark-900 rounded-3xl overflow-hidden border border-zinc-800 group relative">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Chiesa_San_Pietro_Porto_Venere.jpg" alt="Chiesa di San Pietro a Portovenere" class="img-cover group-hover:scale-105 transition-transform duration-700 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent"></div>
+                    </div>
+                    <div class="p-8 relative -mt-16">
+                        <div class="flex justify-between items-end mb-4">
+                            <div class="w-14 h-14 bg-dark-900 border border-sky-400 text-sky-400 rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-water"></i></div>
+                            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fa-solid fa-location-dot"></i> Maps</a>
+                        </div>
+                        <h4 class="font-display text-2xl text-white mb-3">Portovenere</h4>
+                        <p class="font-serif text-lg text-zinc-300 leading-relaxed text-justify">Le scogliere nere e le onde. Lo scenario del dramma byroniano: l'architettura del dogma (San Pietro) che osserva la potenza della natura selvaggia.</p>
+                    </div>
+                </div>
+
+                <div class="bg-dark-900 rounded-3xl overflow-hidden border border-zinc-800 group relative">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/%22Villa_Magni%2C_ultima_dimora_di_P.B.Shelley_%22.jpg" alt="Villa Magni a San Terenzo" class="img-cover group-hover:scale-105 transition-transform duration-700 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent"></div>
+                    </div>
+                    <div class="p-8 relative -mt-16">
+                        <div class="flex justify-between items-end mb-4">
+                            <div class="w-14 h-14 bg-dark-900 border border-zinc-300 text-zinc-300 rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-wind"></i></div>
+                            <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fa-solid fa-location-dot"></i> Maps</a>
+                        </div>
+                        <h4 class="font-display text-2xl text-white mb-3">San Terenzo</h4>
+                        <p class="font-serif text-lg text-zinc-300 leading-relaxed text-justify">Villa Magni. Shelley ed il mare sereno ma fatalmente traditore. Il luogo dove la speculazione panteista incontra l'immensità dell'orizzonte ligure.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="poeti" class="py-24 bg-dark-900 border-t border-zinc-800">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-24 reveal">
+                <p class="font-sans text-gold-500 uppercase tracking-[0.2em] text-xs mb-3">Anthology & Theology</p>
+                <h2 class="font-display text-5xl md:text-6xl text-white mb-6">I Cercatori d'Infinito</h2>
+                <p class="font-serif text-2xl text-zinc-400 italic max-w-3xl mx-auto leading-relaxed">Tre voci e un'immersione nei testi originali.</p>
+            </div>
+
+            <div class="mb-32 reveal">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-10 mb-12">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Lord_Byron_in_Albanian_dress.jpg" alt="Lord Byron" class="poet-portrait shrink-0">
+                    <div class="text-center md:text-left">
+                        <p class="font-sans text-sky-400 text-xs tracking-[0.2em] uppercase mb-2">Grotta dell'Arpaia, Portovenere</p>
+                        <h3 class="font-display text-4xl md:text-5xl text-white mb-2">Lord Byron</h3>
+                        <p class="font-serif text-xl text-zinc-300 leading-loose text-justify">
+                            Byron incarna il ribelle dominato da un'inquietudine perenne. Nelle onde che si infrangono sotto San Pietro, egli esprime il desiderio di affidarsi a un'immensità che sente più vera delle istituzioni umane.
+                        </p>
+                    </div>
+                </div>
+                <div class="anthology-box p-6 md:p-12">
+                    <div class="text-center mb-10 border-b border-zinc-700/50 pb-6">
+                        <h4 class="font-display text-3xl text-gold-500 mb-2">Childe Harold's Pilgrimage</h4>
+                        <p class="font-serif text-xl text-zinc-400 italic">Canto IV, St. 178-183</p>
+                    </div>
+                    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16">
+                        <div>
+                            <p class="font-sans text-[11px] font-bold text-sky-400 uppercase tracking-widest mb-6 border-b border-zinc-700/50 pb-2">English Original</p>
+                            <p class="font-serif poem-text text-xl text-white italic">
+                                There is a pleasure in the pathless woods,
+                                There is a rapture on the lonely shore,
+                                There is society, where none intrudes,
+                                By the deep Sea, and music in its roar...
+                            </p>
+                        </div>
+                        <div>
+                            <p class="font-sans text-[11px] font-bold text-gold-500 uppercase tracking-widest mb-6 border-b border-gold-500/30 pb-2">Traduzione Italiana</p>
+                            <p class="font-serif poem-text text-xl text-zinc-300">
+                                Vi è un piacere incolmabile nei boschi senza sentiero,
+                                Vi è un'estasi sacra sulla spiaggia solitaria,
+                                Vi è una compagnia perfetta, dove nessuno si intromette,
+                                Presso il mare profondo, e una musica sinfonica nel suo fragore...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-32 reveal">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-10 mb-12">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Percy_Bysshe_Shelley_by_Alfred_Clint.jpg" alt="Percy B. Shelley" class="poet-portrait shrink-0" style="border-color: #ef4444;">
+                    <div class="text-center md:text-left">
+                        <p class="font-sans text-red-400 text-xs tracking-[0.2em] uppercase mb-2">Villa Magni, San Terenzo</p>
+                        <h3 class="font-display text-4xl md:text-5xl text-white mb-2">Percy B. Shelley</h3>
+                        <p class="font-serif text-xl text-zinc-300 leading-loose text-justify">
+                            Sotto la corazza dell'ateo razionalista, Shelley custodiva un'anima mistica. Percepiva l'universo come l'emanazione di un ineffabile "Unseen Power", una forza che guida l'uomo verso l'amore universale.
+                        </p>
+                    </div>
+                </div>
+                <div class="anthology-box p-6 md:p-12">
+                    <div class="text-center mb-10 border-b border-zinc-700/50 pb-6">
+                        <h4 class="font-display text-3xl text-gold-500 mb-2">Lines Written in the Bay of Lerici</h4>
+                    </div>
+                    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16">
+                        <div>
+                            <p class="font-serif poem-text text-xl text-white italic">
+                                And the fisher with his lamp
+                                And spear about the low rocks damp
+                                Crept, and struck the fish which came
+                                To worship the delusive flame...
+                            </p>
+                        </div>
+                        <div>
+                            <p class="font-serif poem-text text-xl text-zinc-300">
+                                E il cupo pescatore munito della sua debole lampada
+                                E dell'aguzza fiocina lungo le basse e umide rocce
+                                Colpiva a morte il pesce che fiducioso si avvicinava
+                                Per adorare estasiato quella fiamma illusoria...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-10 mb-12">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/22/John_Keats_by_William_Hilton_circa_1822.jpg" alt="John Keats" class="poet-portrait shrink-0" style="border-color: #f59e0b;">
+                    <div class="text-center md:text-left">
+                        <p class="font-sans text-amber-500 text-xs tracking-[0.2em] uppercase mb-2">La sacralità della materia</p>
+                        <h3 class="font-display text-4xl md:text-5xl text-white mb-2">John Keats</h3>
+                        <p class="font-serif text-xl text-zinc-300 leading-loose text-justify">
+                            Keats trasforma il cosmo in un tabernacolo. Attraverso i sensi, egli coglie una bellezza fisica che introduce spontaneamente a una bellezza spirituale superiore, apologia poetica dell'Incarnazione.
+                        </p>
+                    </div>
+                </div>
+                <div class="anthology-box p-6 md:p-12">
+                    <div class="text-center mb-10 border-b border-zinc-700/50 pb-6">
+                        <h4 class="font-display text-3xl text-gold-500 mb-2">Bright Star!</h4>
+                    </div>
+                    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16">
+                        <div>
+                            <p class="font-serif poem-text text-xl text-white italic">
+                                Bright star, would I were stedfast as thou art—
+                                Not in lone splendour hung aloft the night
+                                And watching, with eternal lids apart,
+                                Like nature's patient, sleepless Eremite...
+                            </p>
+                        </div>
+                        <div>
+                            <p class="font-serif poem-text text-xl text-zinc-300">
+                                Stella lucente, oh fossi io saldo e costante come lo sei tu —
+                                Non sospeso nell'alta notte in un gelido splendore,
+                                A vegliare con le palpebre eternamente dischiuse,
+                                Come un austero Eremita della natura...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visioni" class="py-24 bg-zinc-900 border-t border-zinc-800">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
                 <p class="font-sans text-sky-400 uppercase tracking-[0.2em] text-xs mb-3">Immersive Experience</p>
                 <h2 class="font-display text-4xl md:text-5xl text-white mb-6">Visioni Sonore & Oltre</h2>
-                <p class="font-serif text-xl text-zinc-400 italic max-w-3xl mx-auto">
-                    Contempla l'incontro tra paesaggio e parola attraverso queste interpretazioni visive.
-                </p>
+                <div class="w-24 h-px bg-gold-500 mx-auto"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="reveal">
-                    <div class="video-container mb-6">
-                        <iframe src="https://www.youtube.com/embed/6WuxFMKw3SQ" title="The Ligurian Sublime" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="video-card reveal">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/6WuxFMKw3SQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
-                    <h4 class="font-display text-xl text-gold-500 mb-2">The Ligurian Sublime</h4>
-                    <p class="font-serif text-zinc-300 leading-relaxed italic">Un'introduzione visiva al viaggio: dove la tempesta della poesia incontra la pace della Rivelazione.</p>
+                    <div class="p-6">
+                        <h4 class="font-display text-gold-400 text-lg mb-2">The Ligurian Sublime</h4>
+                        <p class="font-serif text-zinc-400 italic">Un'introduzione visiva ai paesaggi che hanno forgiato l'immaginario dei poeti e la ricerca del Mistero.</p>
+                    </div>
                 </div>
 
-                <div class="reveal reveal-delay-1">
-                    <div class="video-container mb-6">
-                        <iframe src="https://www.youtube.com/embed/aKEEpy4PAMk" title="Byron at Portovenere" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div class="video-card reveal reveal-delay-1">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/aKEEpy4PAMk" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
-                    <h4 class="font-display text-xl text-sky-400 mb-2">Byron: L'Oceano come Purificazione</h4>
-                    <p class="font-serif text-zinc-300 leading-relaxed italic">L'invocazione all'immensità marina presso la Grotta dell'Arpaia, specchio dell'anima ribelle.</p>
+                    <div class="p-6">
+                        <h4 class="font-display text-sky-400 text-lg mb-2">Byron: L'Eroe ed il Mare</h4>
+                        <p class="font-serif text-zinc-400 italic">L'indomito spirito byroniano nel fragore delle onde di Portovenere, tra libertà e titanismo.</p>
+                    </div>
                 </div>
 
-                <div class="reveal">
-                    <div class="video-container mb-6">
-                        <iframe src="https://www.youtube.com/embed/syKiS043Wr0" title="Shelley's Unseen Power" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div class="video-card reveal">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/syKiS043Wr0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
-                    <h4 class="font-display text-xl text-red-400 mb-2">Shelley: Il Potere Invisibile</h4>
-                    <p class="font-serif text-zinc-300 leading-relaxed italic">L'allegoria del pesce e della torcia: la tensione mistica di un'anima in cerca dell'assoluto a San Terenzo.</p>
+                    <div class="p-6">
+                        <h4 class="font-display text-red-400 text-lg mb-2">Shelley: L'Unseen Power</h4>
+                        <p class="font-serif text-zinc-400 italic">La tensione panteistica e la ricerca di quella forza invisibile che anima il Golfo di Lerici.</p>
+                    </div>
                 </div>
 
-                <div class="reveal reveal-delay-1">
-                    <div class="video-container mb-6">
-                        <iframe src="https://www.youtube.com/embed/elsAlWZIjPg" title="Keats' Bright Star" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div class="video-card reveal reveal-delay-1">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/elsAlWZIjPg" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
-                    <h4 class="font-display text-xl text-amber-500 mb-2">Keats: Bright Star!</h4>
-                    <p class="font-serif text-zinc-300 leading-relaxed italic">L'ultimo sonetto e la liturgia dei sensi: la bellezza fisica come soglia verso l'eterno.</p>
+                    <div class="p-6">
+                        <h4 class="font-display text-amber-500 text-lg mb-2">Keats: Bellezza ed Eternità</h4>
+                        <p class="font-serif text-zinc-400 italic">La contemplazione estatica della materia come soglia di un'eternità che non svanisce.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="programma" class="py-24 bg-zinc-900 border-t border-zinc-800 relative overflow-hidden">
-        </section>
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-20 reveal">
+                <p class="font-sans text-sky-400 uppercase tracking-[0.2em] text-xs mb-3">Organizzazione</p>
+                <h2 class="font-display text-4xl md:text-5xl text-white mb-6">Tabella di Marcia</h2>
+                <div class="w-24 h-px bg-gold-500 mx-auto"></div>
+            </div>
+
+            <div class="reveal reveal-delay-1 mb-16">
+                <h3 class="font-display text-2xl text-gold-500 mb-6 border-b border-zinc-700/50 pb-4">Sabato 7 Marzo: Arrivo e Riviera di Levante</h3>
+                <div class="logistics-table-container">
+                    <table class="logistics-table">
+                        <thead>
+                            <tr>
+                                <th>Orario</th>
+                                <th>Attività</th>
+                                <th>Dettagli</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>07:00</td>
+                                <td>Partenza</td>
+                                <td>Dal Liceo Calini in pullman.</td>
+                            </tr>
+                            <tr>
+                                <td>11:00</td>
+                                <td>Arrivo Portovenere</td>
+                                <td>Visita Chiesa di San Pietro, Grotta Byron e Castello Doria.</td>
+                            </tr>
+                            <tr>
+                                <td>16:15</td>
+                                <td>Cultura</td>
+                                <td>Villa Romana del Varignano e Le Grazie.</td>
+                            </tr>
+                            <tr>
+                                <td>18:00</td>
+                                <td>Trasferimento</td>
+                                <td>Verso il Monastero Santa Croce a Bocca di Magra.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="reveal mb-16">
+                <h3 class="font-display text-2xl text-gold-500 mb-6 border-b border-zinc-700/50 pb-4">Domenica 8 Marzo: Cinque Terre e Lerici</h3>
+                <div class="logistics-table-container">
+                    <table class="logistics-table">
+                        <thead>
+                            <tr>
+                                <th>Orario</th>
+                                <th>Attività</th>
+                                <th>Dettagli</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>09:00</td>
+                                <td>Cinque Terre</td>
+                                <td>Trasferimento a Riomaggiore e Via dell'Amore per Manarola.</td>
+                            </tr>
+                            <tr>
+                                <td>13:30</td>
+                                <td>Lerici</td>
+                                <td>Pomeriggio a Lerici, Torre di San Rocco e Chiesa S. Francesco.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="reveal">
+                <h3 class="font-display text-2xl text-gold-500 mb-6 border-b border-zinc-700/50 pb-4">Lunedì 9 Marzo: Trekking e Rientro</h3>
+                <div class="logistics-table-container">
+                    <table class="logistics-table">
+                        <thead>
+                            <tr>
+                                <th>Orario</th>
+                                <th>Attività</th>
+                                <th>Dettagli</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>09:15</td>
+                                <td>Trekking</td>
+                                <td>Parco P. Shelley: percorso CAI 411.</td>
+                            </tr>
+                            <tr>
+                                <td>11:30</td>
+                                <td>Castello</td>
+                                <td>Visita al Castello di Lerici.</td>
+                            </tr>
+                            <tr>
+                                <td>15:00</td>
+                                <td>Rientro</td>
+                                <td>Partenza per Brescia.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pt-24 pb-12 bg-dark-900 text-center relative overflow-hidden">
+        <div class="max-w-3xl mx-auto px-6 relative z-10 reveal">
+            <i class="fa-solid fa-dove text-5xl text-gold-500 mb-10 opacity-80"></i>
+            <p class="font-serif text-3xl md:text-4xl text-white italic mb-12 leading-relaxed">
+                "Ci hai fatti per Te, o Signore,<br>e il nostro cuore è irrequieto<br>finché non trova finalmente pace in Te."
+            </p>
+            <p class="font-display text-gold-500 tracking-[0.2em] uppercase text-sm mb-24">— Sant'Agostino d'Ippona</p>
+            <p class="font-sans text-zinc-500 text-[10px] md:text-xs tracking-[0.2em] leading-loose uppercase">
+                Liceo Scientifico "A. Calini" • Brescia<br>
+                Dispensa digitale ad uso interno • 2026
+            </p>
+        </div>
+    </footer>
 
     <script>
-        // Tutti gli script precedenti (Scroll, Navbar, Chart.js) rimangono validi
+        // Animazioni Scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.05 });
+
+        revealElements.forEach(el => revealOnScroll.observe(el));
+
+        // Navbar Logic
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-glass-strong');
+            } else {
+                navbar.classList.remove('bg-glass-strong');
+            }
+        });
     </script>
 </body>
 </html>
