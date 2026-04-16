@@ -85,8 +85,6 @@
         .logistics-table td { padding: 1.25rem; font-family: 'Cormorant Garamond', serif; font-size: 1.125rem; color: #d4d4d8; border-bottom: 1px solid rgba(63, 63, 70, 0.5); }
         .logistics-table tbody tr:hover { background-color: rgba(39, 39, 42, 0.4); transition: background-color 0.3s; }
         .logistics-table td:first-child { font-family: 'Cinzel', serif; font-weight: bold; color: #FBBF24; }
-        
-        /* Stili per i link Wikipedia nella tabella */
         .wiki-link {
             color: #e4e4e7;
             text-decoration: underline;
@@ -98,13 +96,40 @@
             color: #FBBF24;
             text-decoration-color: #FBBF24;
         }
-        
         .logistics-table .action-link { color: #38bdf8; font-family: 'Inter', sans-serif; font-size: 0.85rem; transition: color 0.3s; }
         .logistics-table .action-link:hover { color: #7dd3fc; text-decoration: underline; }
+
+        /* Video Section Custom Styles */
+        .video-card {
+            background: rgba(24, 24, 27, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+        .video-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            background: #000;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-gold-500 selection:text-dark-900">
-
     <nav class="fixed w-full z-40 bg-glass-strong transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex flex-col">
@@ -115,10 +140,12 @@
                 <a href="#prologo" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Prologo</a>
                 <a href="#mappa" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Luoghi</a>
                 <a href="#poeti" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Poeti & Testi</a>
+                <a href="#visioni" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Visioni</a>
                 <a href="#programma" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Il Programma</a>
             </div>
             <div class="md:hidden flex space-x-4 overflow-x-auto no-scrollbar w-full ml-4">
                 <a href="#poeti" class="font-sans text-[10px] uppercase tracking-widest text-zinc-300 hover:text-gold-500 whitespace-nowrap">Testi</a>
+                <a href="#visioni" class="font-sans text-[10px] uppercase tracking-widest text-zinc-300 hover:text-gold-500 whitespace-nowrap">Visioni</a>
                 <a href="#programma" class="font-sans text-[10px] uppercase tracking-widest text-zinc-300 hover:text-gold-500 whitespace-nowrap">Logistica</a>
             </div>
         </div>
@@ -129,7 +156,6 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Chiesa_San_Pietro_Porto_Venere.jpg" alt="Mare Ligure Tempestoso" class="img-cover opacity-50">
             <div class="absolute inset-0 bg-gradient-to-b from-dark-900/50 via-dark-900/70 to-dark-900"></div>
         </div>
-        
         <div class="relative z-10 w-full max-w-5xl mx-auto px-6 flex flex-col items-center text-center reveal">
             <div class="inline-block px-5 py-2 rounded-full border border-gold-500/30 bg-gold-500/10 mb-8 backdrop-blur-md">
                 <p class="font-sans text-gold-400 tracking-[0.15em] uppercase text-[10px] md:text-xs">Classi 5C e 5G • 7-9 Marzo 2026</p>
@@ -153,19 +179,15 @@
                 <h2 class="font-display text-3xl md:text-4xl text-gold-500 text-center">Il Ponte verso il Mistero</h2>
                 <div class="h-px flex-1 bg-gradient-to-l from-transparent to-gold-500"></div>
             </div>
-            
             <p class="font-serif text-xl md:text-2xl text-zinc-300 leading-loose drop-cap mb-8 text-justify">
                 Giungendo sui lidi liguri, la nostra mente potrebbe essere indotta a tracciare un confine netto, quasi una trincea militare, tra il silenzio rassicurante e ordinato della preghiera e le tempeste intellettuali che agitavano gli animi di Byron, Shelley e Keats lungo queste stesse identiche coste. Questo nuovo approdo segna l'evoluzione di un cammino triennale che ha già esplorato il senso del pellegrinaggio sotto diverse spoglie: se due anni fa il percorso si apriva con i Canterbury Tales, indagando il gesto fisico e granitico del mettersi in cammino verso la tomba di un santo, e lo scorso anno la Venezia di Shakespeare ci ha permesso di rintracciare i sentieri delle relazioni umane e tragiche, oggi ci addentriamo in un pellegrinaggio squisitamente esistenziale.
             </p>
-
             <p class="font-serif text-xl md:text-2xl text-zinc-300 leading-loose mb-8 text-justify">
                 Ci muoviamo dalla contemplazione delle creature per riconoscere la presenza di un Creatore, immergendoci in quell'esperienza romantica dove la potenza della natura agisce come un fascino irresistibile che spinge, paradossalmente, ad abbandonare il materiale attraverso la materia stessa, cercando lo spirito che in essa è custodito. È un romanticismo che muove, spezza e affascina, elevando lo sguardo oltre l'immanenza verso una forza che richiama l'anima a superare i propri confini.
             </p>
-
             <p class="font-serif text-xl md:text-2xl text-zinc-300 leading-loose mb-8 text-justify">
-                In questa tensione verso l'infinito, la tradizione dei monaci carmelitani che ci ospitano offre un riferimento prezioso e antico. Il Monte Carmelo, luogo di rifugio del profeta Elia, divenne per i primi cristiani un luogo di permanenza nella contemplazione, dove la solitudine e la natura selvaggia erano lo spazio privilegiato per scorgere la presenza di Dio. Proprio come nel Cantico dei Cantici la vita dell'anima è descritta come una colomba che cerca riparo nell'intimità del divino:
+                In questa tensione verso l'infinito, la traditione dei monaci carmelitani che ci ospitano offre un riferimento prezioso e antico. Il Monte Carmelo, luogo di rifugio del profeta Elia, divenne per i primi cristiani un luogo di permanenza nella contemplazione, dove la solitudine e la natura selvaggia erano lo spazio privilegiato per scorgere la presenza di Dio. Proprio come nel Cantico dei Cantici la vita dell'anima è descritta come una colomba che cerca riparo nell'intimità del divino:
             </p>
-
             <div class="bg-zinc-800/40 border-l-4 border-gold-500 p-8 my-12 rounded-r-2xl shadow-xl">
                 <p class="font-serif text-2xl md:text-3xl text-white italic mb-4 leading-relaxed">
                     "O mia colomba, che stai nelle fenditure della roccia, nei nascondigli dei dirupi, mostrami il tuo viso, fammi sentire la tua voce."
@@ -175,11 +197,9 @@
                     <p class="font-sans text-gold-500 text-sm tracking-widest uppercase font-semibold">Cantico dei Cantici 2,14</p>
                 </div>
             </div>
-
             <p class="font-serif text-xl md:text-2xl text-zinc-300 leading-loose mb-8 text-justify">
                 Così i monaci stavano nel silenzio della contemplazione e nella forza di uno sguardo che interroga la natura, volendo intuire dentro di essa il soffio divino.
             </p>
-
             <div class="bg-zinc-800/40 border-l-4 border-gold-500 p-8 my-12 rounded-r-2xl shadow-xl">
                 <p class="font-serif text-2xl md:text-3xl text-white italic mb-4 leading-relaxed">
                     "Dalla grandezza e bellezza delle creature, per analogia, si contempla il loro Autore."
@@ -189,11 +209,9 @@
                     <p class="font-sans text-gold-500 text-sm tracking-widest uppercase font-semibold">Libro della Sapienza 13:5</p>
                 </div>
             </div>
-
             <p class="font-serif text-xl md:text-2xl text-zinc-300 leading-loose mb-8 text-justify">
                 Questa immagine biblica ci ricorda che l'uomo è strutturalmente fatto per andare "oltre", per non arrestarsi alla superficie delle cose ma risalire dalla bellezza all'archetipo che sostiene l'universo. Anche la poesia del Novecento italiano ha saputo indagare questa spinta incessante; basti pensare a Eugenio Montale che, osservando il paesaggio ligure, sentiva che la natura stessa ci lancia un segnale:
             </p>
-
             <div class="bg-zinc-800/40 border-l-4 border-sky-400 p-8 my-12 rounded-r-2xl shadow-xl">
                 <p class="font-serif text-2xl md:text-3xl text-white italic mb-4 leading-relaxed">
                     "sotto l'azzurro fitto / del cielo qualche uccello di mare se ne va; / né sosta mai: perché tutte le immagini / portano scritto: «più in là»."
@@ -203,15 +221,12 @@
                     <p class="font-sans text-sky-400 text-sm tracking-widest uppercase font-semibold">Eugenio Montale, Maestrale</p>
                 </div>
             </div>
-
             <p class="font-serif text-xl md:text-2xl text-zinc-300 leading-loose mb-8 text-justify">
                 Il rischio, già corso dai filosofi antichi alla ricerca dell'archè, è quello di fermarsi al secondo gradino del podio, riconoscendo l'importanza degli elementi naturali senza però scorgere che a fondamento di essi vi è Qualcuno. I poeti inglesi cercavano disperatamente questo respiro vitale. Quando Lord Byron idolatrava le onde furenti di Portovenere, o Keats si smarriva nell'estasi della bellezza, non stavano affatto spegnendo lo spirito, ma lo dilatavano a dismisura. Tuttavia, questo pellegrinaggio interiore non può risolversi in un naufragio nel sé, in un semplice "io contemplo e sto bene". L'esperienza cristiana impedisce questo isolamento: essa non si accontenta dell'emozione, ma trasforma l'estasi in relazione personale con la persona di Gesù Cristo.
             </p>
-
             <p class="font-serif text-xl md:text-2xl text-zinc-300 leading-loose mb-8 text-justify">
                 È qui che i poeti romantici entrano in crisi, cercando di fermarsi alla finestra a contemplare l'infinito come si farebbe con una fidanzata di cui non si ha il coraggio di avvicinarsi. La Rivelazione non condanna la loro immensa sete, ma vi si affianca per sussurrare che quella Forza cercata nei venti e nelle maree possiede un Volto e un cuore, rivelandosi non nel clamore, ma nel profondo del silenzio, proprio come accadde ad Elia sul monte:
             </p>
-
             <div class="bg-zinc-800/40 border-l-4 border-gold-500 p-8 my-12 rounded-r-2xl shadow-xl">
                 <p class="font-serif text-xl md:text-2xl text-white italic mb-4 leading-relaxed">
                     "Ci fu un vento impetuoso e gagliardo da spaccare i monti e spezzare le rocce davanti al Signore, ma il Signore non era nel vento. Dopo il vento, un terremoto, ma il Signore non era nel terremoto. Dopo il terremoto, un fuoco, ma il Signore non era nel fuoco. Dopo il fuoco, il sussurro di una brezza leggera."
@@ -231,7 +246,6 @@
                 <h2 class="font-display text-4xl md:text-5xl text-white mb-4">Le Coordinate del Viaggio</h2>
                 <p class="font-serif text-xl text-zinc-400 italic">I tre luoghi fisici che incarnano le tensioni dello spirito.</p>
             </div>
-
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-dark-900 rounded-3xl overflow-hidden border border-zinc-800 group relative">
                     <div class="h-56 overflow-hidden relative">
@@ -247,7 +261,6 @@
                         <p class="font-serif text-lg text-zinc-300 leading-relaxed text-justify">Il Monastero Santa Croce. Dove il fiume incontra placidamente il mare, la tradizione monastica custodisce la quiete profonda della fede. Il porto sicuro da cui partire, dove la vertiginosa vastità del Creato non spaventa, ma viene pacificata nel silenzio della contemplazione e nell'intimità della preghiera.</p>
                     </div>
                 </div>
-
                 <div class="bg-dark-900 rounded-3xl overflow-hidden border border-zinc-800 group relative">
                     <div class="h-56 overflow-hidden relative">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Chiesa_San_Pietro_Porto_Venere.jpg" alt="Chiesa di San Pietro a Portovenere" class="img-cover group-hover:scale-105 transition-transform duration-700 opacity-80">
@@ -262,7 +275,6 @@
                         <p class="font-serif text-lg text-zinc-300 leading-relaxed text-justify">Le scogliere nere e affilate si scontrano con le onde. Lo scenario del dramma byroniano: la solida architettura del dogma (San Pietro) che osserva dall'alto l'incontenibile e caotica potenza della natura selvaggia.</p>
                     </div>
                 </div>
-
                 <div class="bg-dark-900 rounded-3xl overflow-hidden border border-zinc-800 group relative">
                     <div class="h-56 overflow-hidden relative">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/%22Villa_Magni%2C_ultima_dimora_di_P.B.Shelley_%22.jpg" alt="Villa Magni a San Terenzo" class="img-cover group-hover:scale-105 transition-transform duration-700 opacity-80">
@@ -283,7 +295,6 @@
 
     <section id="poeti" class="py-24 bg-dark-900 border-t border-zinc-800">
         <div class="max-w-6xl mx-auto px-6">
-            
             <div class="text-center mb-24 reveal">
                 <p class="font-sans text-gold-500 uppercase tracking-[0.2em] text-xs mb-3">Anthology & Theology</p>
                 <h2 class="font-display text-5xl md:text-6xl text-white mb-6">I Cercatori d'Infinito</h2>
@@ -291,7 +302,6 @@
                     Tre voci, tre ritratti e un'immersione profonda nei testi originali.
                 </p>
             </div>
-
             <div class="mb-32 reveal">
                 <div class="flex flex-col md:flex-row items-center md:items-start gap-10 mb-12">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Lord_Byron_in_Albanian_dress.jpg" alt="Ritratto storico di Lord Byron" class="poet-portrait shrink-0">
@@ -304,7 +314,6 @@
                         </p>
                     </div>
                 </div>
-
                 <div class="anthology-box p-6 md:p-12">
                     <div class="text-center mb-10 border-b border-zinc-700/50 pb-6">
                         <h4 class="font-display text-3xl text-gold-500 mb-2">Childe Harold's Pilgrimage</h4>
@@ -323,16 +332,13 @@
                                 From all I may be, or have been before,
                                 To mingle with the Universe, and feel
                                 What I can ne'er express, yet cannot all conceal.
-                                
-                                Roll on, thou deep and dark blue Ocean—roll!
+                                                                Roll on, thou deep and dark blue Ocean—roll!
                                 Ten thousand fleets sweep over thee in vain;
                                 Man marks the earth with ruin—his control
                                 Stops with the shore;—upon the watery plain
                                 The wrecks are all thy deed...
-                                
-                                [...]
-                                
-                                Thou glorious mirror, where the Almighty's form
+                                                                [...]
+                                                                Thou glorious mirror, where the Almighty's form
                                 Glasses itself in tempests; in all time,
                                 Calm or convulsed—in breeze, or gale, or storm,
                                 Icing the pole, or in the torrid clime
@@ -353,19 +359,16 @@
                                 A tutto ciò che posso essere, o sono stato prima nel dolore,
                                 Per fondermi misticamente con l'Universo, e sentire
                                 Ciò che a parole non potrò mai esprimere, eppur non posso del tutto celare.
-                                
-                                Onda su onda, tu profondo e scuro Oceano azzurro, scorri incessante!
+                                                                Onda su onda, tu profondo e scuro Oceano azzurro, scorri incessante!
                                 Diecimila potenti flotte ti solcano del tutto invano;
                                 L'uomo segna la terra con la brutale rovina — ma il suo dominio
                                 Si ferma inesorabilmente alla tua riva; sulla sconfinata pianura d'acqua
                                 I naufragi sono tutti opera esclusivamente tua...
-                                
-                                [...]
-                                
-                                Tu glorioso specchio riflettente, in cui la forma stessa dell'Onnipotente
+                                                                [...]
+                                                                Tu glorioso specchio riflettente, in cui la forma stessa dell'Onnipotente
                                 Si riflette limpidamente nelle tempeste; in ogni tempo,
                                 Calmo o convulso — nella dolce brezza, nella burrasca, o nell'uragano,
-                                Mentre ghiacci il polo estremo, o nel clima torrido
+                                Mentre ghiacci il pole estremo, o nel clima torrido
                                 Ti sollevi scuro e minaccioso; senza confini, senza fine, e sublime —
                                 Tu sei l'immagine stessa dell'Eternità — il trono incontrastato
                                 Dell'Invisibile Creatore...
@@ -374,7 +377,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="mb-32 reveal">
                 <div class="flex flex-col md:flex-row items-center md:items-start gap-10 mb-12">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Percy_Bysshe_Shelley_by_Alfred_Clint.jpg" alt="Ritratto storico di Percy Bysshe Shelley" class="poet-portrait shrink-0" style="border-color: #ef4444;">
@@ -387,7 +389,6 @@
                         </p>
                     </div>
                 </div>
-
                 <div class="anthology-box p-6 md:p-12">
                     <div class="text-center mb-10 border-b border-zinc-700/50 pb-6">
                         <h4 class="font-display text-3xl text-gold-500 mb-2">Lines Written in the Bay of Lerici</h4>
@@ -403,10 +404,8 @@
                                 The enchanted heart could hear,
                                 Like notes which die when born, but still
                                 Haunt the echoes of the hill;
-                                
-                                [...]
-                                
-                                And the fisher with his lamp
+                                                                [...]
+                                                                And the fisher with his lamp
                                 And spear about the low rocks damp
                                 Crept, and struck the fish which came
                                 To worship the delusive flame.
@@ -425,10 +424,8 @@
                                 Il cuore incantato poteva udire chiaramente pulsare,
                                 Come magiche note che muoiono nell'istante in cui nascono, ma che ancora
                                 Infestano come spettri gli echi silenziosi della collina;
-                                
-                                [...]
-                                
-                                E il cupo pescatore munito della sua debole lampada
+                                                                [...]
+                                                                E il cupo pescatore munito della sua debole lampada
                                 E dell'aguzza fiocina lungo le basse e umide rocce
                                 Strisciava silenzioso, e colpiva a morte il pesce che fiducioso si avvicinava
                                 Per adorare estasiato quella fiamma illusoria e ingannatrice.
@@ -441,7 +438,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="reveal">
                 <div class="flex flex-col md:flex-row items-center md:items-start gap-10 mb-12">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/2/22/John_Keats_by_William_Hilton_circa_1822.jpg" alt="Ritratto storico di John Keats" class="poet-portrait shrink-0" style="border-color: #f59e0b;">
@@ -454,7 +450,6 @@
                         </p>
                     </div>
                 </div>
-
                 <div class="anthology-box p-6 md:p-12">
                     <div class="text-center mb-10 border-b border-zinc-700/50 pb-6">
                         <h4 class="font-display text-3xl text-gold-500 mb-2">Bright Star!</h4>
@@ -502,7 +497,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -552,11 +546,10 @@
                     Visualizzare i vettori e l'estensione della nostalgia romantica rispetto al nucleo della Rivelazione.
                 </p>
             </div>
-
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="order-2 lg:order-1">
                     <p class="font-serif text-xl text-zinc-300 leading-loose text-justify mb-8">
-                        L'analisi grafica illustra visivamente come l'immenso desiderio dell'infinito, connaturato profondamente nel cuore dell'uomo, si espanda in radicali direzioni filosofiche partendo dal nucleo vitale e bilanciato della Rivelazione cristiana (che si posiziona idealmente allo zero del grafico centrale). 
+                        L'analisi grafica illustra visivamente come l'immenso desiderio dell'infinito, connaturato profondamente nel cuore dell'uomo, si espanda in radicali direzioni filosofiche partendo dal nucleo vitale e bilanciato della Rivelazione cristiana (che si posiziona idealmente allo zero del grafico centrale).
                     </p>
                     <p class="font-serif text-xl text-zinc-300 leading-loose text-justify">
                         Nessuna di queste magnifiche e tormentate fughe letterarie si esaurisce, tuttavia, in un vicolo cieco. Il titanismo solitario di Byron, la vertigine panteista di Shelley e l'estasi sensoriale di Keats tracciano le traiettorie convergenti di un'unica, irriducibile nostalgia: l'anelito verso la dimora originaria. La fede della Chiesa non si erge come un baluardo difensivo per arginare o recidere queste intuizioni sublimi, ma si colloca nel cuore della storia per accoglierle e portarle a compimento. Essa svela, infatti, che quel Sublime, rincorso invano nel mormorio impersonale delle onde o nella gelida luce delle costellazioni, possiede da sempre un Volto e un Cuore: la presenza calda, trinitaria e personale del Verbo Incarnato.
@@ -571,17 +564,75 @@
         </div>
     </section>
 
+    <section id="visioni" class="py-24 bg-zinc-900 border-t border-zinc-800">
+        <div class="max-w-6xl mx-auto px-6 reveal">
+            <div class="text-center mb-16">
+                <p class="font-sans text-sky-400 uppercase tracking-[0.2em] text-xs mb-3">Contenuti Multimediali</p>
+                <h2 class="font-display text-4xl md:text-5xl text-white mb-6">Visioni Sonore</h2>
+                <p class="font-serif text-xl text-zinc-400 italic">Approfondimenti video per immergersi nelle atmosfere e nei concetti del viaggio.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/aKEEpy4PAMk" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-6 lg:p-8">
+                        <h4 class="font-display text-xl text-sky-400 mb-3">L'Anima di Byron a Portovenere</h4>
+                        <p class="font-serif text-zinc-300 italic leading-relaxed">
+                            Un'esplorazione del legame tra il poeta e le scogliere spezzine, dove il fragore del mare diventa voce di un'inquietudine sacra.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/elsAlWZIjPg" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-6 lg:p-8">
+                        <h4 class="font-display text-xl text-amber-500 mb-3">Keats e l'Estasi della Bellezza</h4>
+                        <p class="font-serif text-zinc-300 italic leading-relaxed">
+                            Come la "Negative Capability" keatsiana ci insegna a sostare nel mistero della materia senza pretendere di esaurirlo con la ragione.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/syKiS043Wr0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-6 lg:p-8">
+                        <h4 class="font-display text-xl text-red-400 mb-3">Shelley: Naufragio e Potenza Invisibile</h4>
+                        <p class="font-serif text-zinc-300 italic leading-relaxed">
+                            Un'analisi delle ultime visioni di Shelley nel Golfo dei Poeti, tra panteismo e il richiamo inarrestabile dell'Assoluto.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/6WuxFMKw3SQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-6 lg:p-8">
+                        <h4 class="font-display text-xl text-gold-500 mb-3">Il Sublime Ligure e la Fede</h4>
+                        <p class="font-serif text-zinc-300 italic leading-relaxed">
+                            Sintesi del percorso interdisciplinare: dove la letteratura inglese e la teologia si incontrano lungo i sentieri di Lerici e Bocca di Magra.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="programma" class="py-24 bg-zinc-900 border-t border-zinc-800 relative overflow-hidden">
         <div class="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/3/3a/Chiesa_San_Pietro_Porto_Venere.jpg')] bg-cover bg-center opacity-5"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-zinc-900 via-zinc-900/95 to-dark-900"></div>
-
         <div class="max-w-5xl mx-auto px-6 relative z-10">
             <div class="text-center mb-20 reveal">
                 <p class="font-sans text-sky-400 uppercase tracking-[0.2em] text-xs mb-3">Organizzazione</p>
                 <h2 class="font-display text-4xl md:text-5xl text-white mb-6">Tabella di Marcia</h2>
                 <div class="w-24 h-px bg-gold-500 mx-auto"></div>
             </div>
-
             <div class="reveal reveal-delay-1">
                 <h3 class="font-display text-3xl text-gold-500 mb-6 border-b border-zinc-700/50 pb-4">Sabato 7 Marzo: Arrivo e Riviera di Levante</h3>
                 <div class="logistics-table-container">
@@ -726,8 +777,7 @@
                             </tr>
                             <tr>
                                 <td>Pomeriggio</td>
-                                <td>Relax</td>
-                                <td>-</td>
+                                <td>Relax</td>                                <td>-</td>
                                 <td>-</td>
                                 <td>Sosta panoramica presso <a href="https://it.wikipedia.org/wiki/Venere_Azzurra" target="_blank" class="wiki-link">Venere Azzurra</a></td>
                                 <td></td>
@@ -836,10 +886,8 @@
                     </table>
                 </div>
             </div>
-
             <div class="mt-10 bg-dark-900/50 backdrop-blur-sm p-8 md:p-12 rounded-3xl border border-zinc-700 shadow-xl reveal">
                 <h3 class="font-display text-3xl text-white mb-10 border-b border-zinc-700/50 pb-4">Dettagli Economici e Organizzativi</h3>
-                
                 <div class="space-y-8">
                     <div class="border-l-2 border-gold-500/50 pl-6">
                         <h4 class="font-sans text-gold-400 uppercase tracking-widest text-sm font-bold mb-3">Costi di Accesso e Trasporti</h4>
@@ -847,7 +895,6 @@
                            La quota di 15 euro raccolta servirà a coprire l'ingresso al Castello Doria, il contributo per la visita alla Villa Romana del Varignano e le spese relative agli spostamenti in treno previsti dal programma.
                         </p>
                     </div>
-
                     <div class="border-l-2 border-sky-500/50 pl-6">
                         <h4 class="font-sans text-sky-400 uppercase tracking-widest text-sm font-bold mb-3">Gestione dei Pasti</h4>
                         <p class="font-serif text-xl text-zinc-300 leading-relaxed text-justify">
@@ -856,7 +903,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -867,17 +913,14 @@
                 <h2 class="font-display text-4xl md:text-5xl text-white mb-6">Equipaggiamento Necessario</h2>
                 <div class="w-24 h-px bg-gold-500 mx-auto"></div>
             </div>
-
             <div class="space-y-12 reveal">
                 <div class="bg-dark-900/50 p-8 md:p-12 rounded-3xl border border-zinc-700 shadow-xl">
                     <p class="font-serif text-xl text-zinc-300 leading-relaxed mb-8 text-justify">
-                        Per vivere al meglio questa esperienza di cammino e contemplazione, è fondamentale preparare con cura il proprio zaino, ricordando che non sono ammesse borse a tracolla o valigie. All'interno non dovranno mancare i documenti d'identità e la quota di quindici euro in contanti per gli spostamenti in treno previsti dal programma. Per il riposo notturno presso il monastero, occorre munirsi di lenzuolo, sacco a pelo, materassino di tipo ginnico e un pigiama comodo.
+                        Per vivere al meglio questa esperienza di cammino e contemplazione, è fondamentale preparare con cura il proprio zaino, ricordando che non sono ammesse borse a tracolla o valigie. All'interno non dovranno mancare i documenti d'identità e la quota di quindici euro in contanti per gli spostamenti in treno previsti dal programma. Per il riposo notturno presso il monastero, occorre munirsi di lenzuolo, sacco a pelo, asciugamano piccolo da mani e un pigiama comodo.
                     </p>
-
                     <p class="font-serif text-xl text-zinc-300 leading-relaxed mb-8 text-justify">
                         L'abbigliamento deve essere funzionale al movimento: scarpe adatte al cammino e vestiti pratici sono essenziali, includendo un ricambio completo da conservare preferibilmente in sacchetti impermeabili per proteggerli dall'umidità. È caldamente consigliato portare una felpa o un maglione per le serate più fresche, un cappello adatto alle condizioni meteo del momento e una protezione efficace per la pioggia come un K-way o, preferibilmente, un poncho.
                     </p>
-
                     <p class="font-serif text-xl text-zinc-300 leading-relaxed text-justify mb-0">
                         La dotazione tecnica prevede una borraccia con capacità minima di un litro, una torcia preferibilmente frontale per gli spostamenti serali e un power bank completamente carico per il proprio telefono. Per i momenti di riflessione personale e studio, è utile avere con sé un quaderno e una penna. Non dimenticate il materiale per l'igiene personale, comprensivo di spazzolino, dentifricio, salviette umidificate e salvietta, oltre a costume da bagno, salviettone e ciabatte per la notte e per la doccia. Infine, si ricorda di portare il pranzo al sacco per la prima giornata di sabato e di segnalare preventivamente agli accompagnatori l'eventuale necessità di farmaci personali.
                     </p>
@@ -888,16 +931,13 @@
 
     <footer class="pt-24 pb-12 bg-dark-900 text-center relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-sky-900/10 blur-[150px] rounded-full pointer-events-none"></div>
-
         <div class="max-w-3xl mx-auto px-6 relative z-10 reveal">
             <i class="fa-solid fa-dove text-5xl text-gold-500 mb-10 opacity-80"></i>
             <p class="font-serif text-3xl md:text-4xl text-white italic mb-12 leading-relaxed">
                 "Ci hai fatti per Te, o Signore,<br>e il nostro cuore è irrequieto<br>finché non trova finalmente pace in Te."
             </p>
             <p class="font-display text-gold-500 tracking-[0.2em] uppercase text-sm mb-24">— Sant'Agostino d'Ippona, Confessioni (I, 1, 1)</p>
-            
             <div class="w-24 h-px bg-zinc-700 mx-auto mb-12"></div>
-            
             <p class="font-sans text-zinc-500 text-[10px] md:text-xs tracking-[0.2em] leading-loose uppercase">
                 Liceo Scientifico "A. Calini" • Brescia<br>
                 Progetto Interdisciplinare Lingua Inglese - Religione Cattolica<br>
@@ -917,7 +957,6 @@
                 }
             });
         }, { threshold: 0.05, rootMargin: "0px 0px -50px 0px" });
-
         revealElements.forEach(el => revealOnScroll.observe(el));
 
         // --- Navbar Background Logic ---
@@ -934,9 +973,8 @@
 
         // --- Chart.js (Radar Chart) ---
         const ctx = document.getElementById('theologicalRadarChart').getContext('2d');
-        Chart.defaults.color = '#a1a1aa'; // zinc-400
+        Chart.defaults.color = '#a1a1aa'; 
         Chart.defaults.font.family = "'Inter', sans-serif";
-
         const chartData = {
             labels: [
                 'Attrazione per l\'Ignoto Invisibile',
@@ -949,27 +987,26 @@
                 {
                     label: 'Lord Byron',
                     data: [7, 10, 7, 3, 8], 
-                    backgroundColor: 'rgba(56, 189, 248, 0.15)', // Sky 400
+                    backgroundColor: 'rgba(56, 189, 248, 0.15)',
                     borderColor: '#38bdf8', borderWidth: 2,
                     pointBackgroundColor: '#38bdf8', pointRadius: 4, pointHoverRadius: 6
                 },
                 {
                     label: 'Percy Bysshe Shelley',
                     data: [9, 8, 10, 4, 10], 
-                    backgroundColor: 'rgba(212, 175, 55, 0.15)', // Gold
+                    backgroundColor: 'rgba(212, 175, 55, 0.15)',
                     borderColor: '#D4AF37', borderWidth: 2,
                     pointBackgroundColor: '#D4AF37', pointRadius: 4, pointHoverRadius: 6
                 },
                 {
                     label: 'John Keats',
                     data: [8, 3, 5, 10, 5], 
-                    backgroundColor: 'rgba(245, 158, 11, 0.15)', // Amber
+                    backgroundColor: 'rgba(245, 158, 11, 0.15)',
                     borderColor: '#f59e0b', borderWidth: 2,
                     pointBackgroundColor: '#f59e0b', pointRadius: 4, pointHoverRadius: 6
                 }
             ]
         };
-
         const chartOptions = {
             responsive: true, maintainAspectRatio: false,
             scales: {
@@ -978,7 +1015,7 @@
                     grid: { color: 'rgba(255, 255, 255, 0.05)' },
                     pointLabels: {
                         font: { family: "'Inter', sans-serif", size: window.innerWidth < 768 ? 10 : 12, weight: '500' },
-                        color: '#d4d4d8' // zinc-300
+                        color: '#d4d4d8'
                     },
                     ticks: { display: false, min: 0, max: 10 }
                 }
@@ -989,7 +1026,7 @@
                     labels: { color: '#f8fafc', usePointStyle: true, padding: window.innerWidth < 768 ? 20 : 30, boxWidth: 8, font: { size: 13, weight: '500' } }
                 },
                 tooltip: {
-                    backgroundColor: 'rgba(24, 24, 27, 0.95)', // zinc-900
+                    backgroundColor: 'rgba(24, 24, 27, 0.95)',
                     titleFont: { family: "'Cinzel', serif", size: 16 },
                     bodyFont: { family: "'Inter', sans-serif", size: 14 },
                     padding: 16, borderColor: '#D4AF37', borderWidth: 1, cornerRadius: 8,
@@ -999,7 +1036,6 @@
                 }
             }
         };
-
         new Chart(ctx, { type: 'radar', data: chartData, options: chartOptions });
     </script>
 </body>
