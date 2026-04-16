@@ -85,15 +85,22 @@
         .logistics-table td { padding: 1.25rem; font-family: 'Cormorant Garamond', serif; font-size: 1.125rem; color: #d4d4d8; border-bottom: 1px solid rgba(63, 63, 70, 0.5); }
         .logistics-table tbody tr:hover { background-color: rgba(39, 39, 42, 0.4); transition: background-color 0.3s; }
         .logistics-table td:first-child { font-family: 'Cinzel', serif; font-weight: bold; color: #FBBF24; }
-        .wiki-link { color: #e4e4e7; text-decoration: underline; text-decoration-color: rgba(113, 113, 122, 0.6); text-underline-offset: 4px; transition: all 0.3s ease; }
-        .wiki-link:hover { color: #FBBF24; text-decoration-color: #FBBF24; }
+        
+        /* Stili per i link Wikipedia nella tabella */
+        .wiki-link {
+            color: #e4e4e7;
+            text-decoration: underline;
+            text-decoration-color: rgba(113, 113, 122, 0.6);
+            text-underline-offset: 4px;
+            transition: all 0.3s ease;
+        }
+        .wiki-link:hover {
+            color: #FBBF24;
+            text-decoration-color: #FBBF24;
+        }
+        
         .logistics-table .action-link { color: #38bdf8; font-family: 'Inter', sans-serif; font-size: 0.85rem; transition: color 0.3s; }
         .logistics-table .action-link:hover { color: #7dd3fc; text-decoration: underline; }
-
-        .video-card { background: rgba(24, 24, 27, 0.6); border: 1px solid rgba(212, 175, 55, 0.1); border-radius: 1.5rem; overflow: hidden; transition: all 0.4s ease; height: 100%; }
-        .video-card:hover { border-color: rgba(212, 175, 55, 0.4); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
     </style>
 </head>
 <body class="antialiased selection:bg-gold-500 selection:text-dark-900">
@@ -108,12 +115,10 @@
                 <a href="#prologo" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Prologo</a>
                 <a href="#mappa" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Luoghi</a>
                 <a href="#poeti" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Poeti & Testi</a>
-                <a href="#visioni" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Visioni</a>
-                <a href="#programma" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Programma</a>
+                <a href="#programma" class="font-sans text-xs uppercase tracking-widest text-zinc-300 hover:text-gold-500 transition-colors">Il Programma</a>
             </div>
             <div class="md:hidden flex space-x-4 overflow-x-auto no-scrollbar w-full ml-4">
-                <a href="#poeti" class="font-sans text-[10px] uppercase tracking-widest text-zinc-300 hover:text-gold-500 whitespace-nowrap">Poeti</a>
-                <a href="#visioni" class="font-sans text-[10px] uppercase tracking-widest text-zinc-300 hover:text-gold-500 whitespace-nowrap">Visioni</a>
+                <a href="#poeti" class="font-sans text-[10px] uppercase tracking-widest text-zinc-300 hover:text-gold-500 whitespace-nowrap">Testi</a>
                 <a href="#programma" class="font-sans text-[10px] uppercase tracking-widest text-zinc-300 hover:text-gold-500 whitespace-nowrap">Logistica</a>
             </div>
         </div>
@@ -251,7 +256,7 @@
                     <div class="p-8 relative -mt-16">
                         <div class="flex justify-between items-end mb-4">
                             <div class="w-14 h-14 bg-dark-900 border border-sky-400 text-sky-400 rounded-full flex items-center justify-center text-xl"><i class="fa-solid fa-water"></i></div>
-                            <a href="https://maps.google.com/?q=Chiesa+San+Pietro+Portovenere" target="_blank" class="btn-maps"><i class="fa-solid fa-location-dot"></i> Maps</a>
+                            <a href="https://maps.google.com/?q=Grotta+di+Byron+Portovenere" target="_blank" class="btn-maps"><i class="fa-solid fa-location-dot"></i> Maps</a>
                         </div>
                         <h4 class="font-display text-2xl text-white mb-3">Portovenere</h4>
                         <p class="font-serif text-lg text-zinc-300 leading-relaxed text-justify">Le scogliere nere e affilate si scontrano con le onde. Lo scenario del dramma byroniano: la solida architettura del dogma (San Pietro) che osserva dall'alto l'incontenibile e caotica potenza della natura selvaggia.</p>
@@ -278,10 +283,13 @@
 
     <section id="poeti" class="py-24 bg-dark-900 border-t border-zinc-800">
         <div class="max-w-6xl mx-auto px-6">
+            
             <div class="text-center mb-24 reveal">
                 <p class="font-sans text-gold-500 uppercase tracking-[0.2em] text-xs mb-3">Anthology & Theology</p>
                 <h2 class="font-display text-5xl md:text-6xl text-white mb-6">I Cercatori d'Infinito</h2>
-                <p class="font-serif text-2xl text-zinc-400 italic max-w-3xl mx-auto leading-relaxed">Tre voci, tre ritratti e un'immersione profonda nei testi originali.</p>
+                <p class="font-serif text-2xl text-zinc-400 italic max-w-3xl mx-auto leading-relaxed">
+                    Tre voci, tre ritratti e un'immersione profonda nei testi originali.
+                </p>
             </div>
 
             <div class="mb-32 reveal">
@@ -494,26 +502,67 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <section id="sintesi" class="py-24 bg-zinc-900 border-t border-zinc-800">
+    <section id="natura-visioni" class="py-24 bg-zinc-900 border-t border-zinc-800">
+        <div class="max-w-6xl mx-auto px-6 reveal">
+            <div class="text-center mb-16">
+                <p class="font-sans text-gold-500 uppercase tracking-[0.2em] text-xs mb-3">Philosophical Landscape</p>
+                <h2 class="font-display text-4xl md:text-5xl text-white mb-6">La Natura per i Romantici</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-3xl bg-dark-900 border border-sky-400/30 text-center hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-12 h-12 bg-sky-900/30 text-sky-400 rounded-full flex items-center justify-center mx-auto mb-6 text-xl">
+                        <i class="fa-solid fa-cloud-showers-water"></i>
+                    </div>
+                    <h4 class="font-display text-2xl text-sky-400 mb-4">Lord Byron</h4>
+                    <p class="font-serif text-lg text-zinc-300 italic leading-relaxed">
+                        La natura è intesa come la controparte esteriore dei sentimenti tempestosi e un fedele compagno della solitudine personale.
+                    </p>
+                </div>
+                <div class="p-8 rounded-3xl bg-dark-900 border border-red-400/30 text-center hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-12 h-12 bg-red-900/30 text-red-400 rounded-full flex items-center justify-center mx-auto mb-6 text-xl">
+                        <i class="fa-solid fa-fire-flame-curved"></i>
+                    </div>
+                    <h4 class="font-display text-2xl text-red-400 mb-4">Percy B. Shelley</h4>
+                    <p class="font-serif text-lg text-zinc-300 italic leading-relaxed">
+                        La natura è considerata fonte primaria di ispirazione, pervasa da una forza attiva che ha lo scopo di guidare l'uomo all'amore.
+                    </p>
+                </div>
+                <div class="p-8 rounded-3xl bg-dark-900 border border-amber-400/30 text-center hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-12 h-12 bg-amber-900/30 text-amber-400 rounded-full flex items-center justify-center mx-auto mb-6 text-xl">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <h4 class="font-display text-2xl text-amber-400 mb-4">John Keats</h4>
+                    <p class="font-serif text-lg text-zinc-300 italic leading-relaxed">
+                        La natura si trasforma in vera e propria musa per la ricerca artistica, attraverso cui la mente creativa coglie ed elabora la bellezza.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sintesi" class="py-24 bg-dark-900 border-t border-zinc-800">
         <div class="max-w-6xl mx-auto px-6 reveal">
             <div class="text-center mb-16">
                 <h2 class="font-display text-4xl md:text-5xl text-gold-500 mb-6">Mappa del Desiderio Astratto</h2>
-                <p class="font-serif text-xl text-zinc-300 italic max-w-3xl mx-auto leading-relaxed">Visualizzare i vettori e l'estensione della nostalgia romantica rispetto al nucleo della Rivelazione.</p>
+                <p class="font-serif text-xl text-zinc-300 italic max-w-3xl mx-auto leading-relaxed">
+                    Visualizzare i vettori e l'estensione della nostalgia romantica rispetto al nucleo della Rivelazione.
+                </p>
             </div>
 
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="order-2 lg:order-1">
                     <p class="font-serif text-xl text-zinc-300 leading-loose text-justify mb-8">
-                        L'analisi grafica illustra visivamente come l'immenso desiderio dell'infinito, connaturato profondamente nel cuore dell'uomo, si espanda in radicali direzioni filosofiche partendo dal nucleo vitale e bilanciato della Rivelazione cristiana.
+                        L'analisi grafica illustra visivamente come l'immenso desiderio dell'infinito, connaturato profondamente nel cuore dell'uomo, si espanda in radicali direzioni filosofiche partendo dal nucleo vitale e bilanciato della Rivelazione cristiana (che si posiziona idealmente allo zero del grafico centrale). 
                     </p>
                     <p class="font-serif text-xl text-zinc-300 leading-loose text-justify">
-                        Il titanismo solitario di Byron, la vertigine panteista di Shelley e l'estasi sensoriale di Keats tracciano le traiettorie convergenti di un'unica, irriducibile nostalgia. La fede non erge un baluardo difensivo, ma svela che quel Sublime possiede da sempre un Volto e un Cuore: la presenza del Verbo Incarnato.
+                        Nessuna di queste magnifiche e tormentate fughe letterarie si esaurisce, tuttavia, in un vicolo cieco. Il titanismo solitario di Byron, la vertigine panteista di Shelley e l'estasi sensoriale di Keats tracciano le traiettorie convergenti di un'unica, irriducibile nostalgia: l'anelito verso la dimora originaria. La fede della Chiesa non si erge come un baluardo difensivo per arginare o recidere queste intuizioni sublimi, ma si colloca nel cuore della storia per accoglierle e portarle a compimento. Essa svela, infatti, che quel Sublime, rincorso invano nel mormorio impersonale delle onde o nella gelida luce delle costellazioni, possiede da sempre un Volto e un Cuore: la presenza calda, trinitaria e personale del Verbo Incarnato.
                     </p>
                 </div>
-                <div class="order-1 lg:order-2 bg-dark-900 p-6 md:p-10 rounded-3xl border border-zinc-800">
+                <div class="order-1 lg:order-2 bg-zinc-900/50 p-6 md:p-10 rounded-3xl border border-zinc-800">
                     <div class="chart-wrapper">
                         <canvas id="theologicalRadarChart"></canvas>
                     </div>
@@ -522,174 +571,436 @@
         </div>
     </section>
 
-    <section id="visioni" class="py-24 bg-dark-900 border-t border-zinc-800">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <p class="font-sans text-sky-400 uppercase tracking-[0.2em] text-xs mb-3">Immersive Experience</p>
-                <h2 class="font-display text-4xl md:text-5xl text-white mb-6">Visioni Sonore & Oltre</h2>
-                <div class="w-24 h-px bg-gold-500 mx-auto"></div>
-            </div>
+    <section id="programma" class="py-24 bg-zinc-900 border-t border-zinc-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/3/3a/Chiesa_San_Pietro_Porto_Venere.jpg')] bg-cover bg-center opacity-5"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-zinc-900 via-zinc-900/95 to-dark-900"></div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="video-card reveal">
-                    <div class="video-container"><iframe src="https://www.youtube.com/embed/6WuxFMKw3SQ"></iframe></div>
-                    <div class="p-8">
-                        <h4 class="font-display text-gold-500 text-xl mb-4">The Ligurian Sublime</h4>
-                        <p class="font-serif text-zinc-300 text-lg italic leading-relaxed">Contemplazione dei paesaggi liguri: dove la natura si fa soglia verso l'eterno.</p>
-                    </div>
-                </div>
-                <div class="video-card reveal reveal-delay-1">
-                    <div class="video-container"><iframe src="https://www.youtube.com/embed/aKEEpy4PAMk"></iframe></div>
-                    <div class="p-8">
-                        <h4 class="font-display text-sky-400 text-xl mb-4">Byron: L'Eroe ed il Mare</h4>
-                        <p class="font-serif text-zinc-300 text-lg italic leading-relaxed">Il fragore delle onde di Portovenere come specchio della solitudine byroniana.</p>
-                    </div>
-                </div>
-                <div class="video-card reveal">
-                    <div class="video-container"><iframe src="https://www.youtube.com/embed/syKiS043Wr0"></iframe></div>
-                    <div class="p-8">
-                        <h4 class="font-display text-red-400 text-xl mb-4">Shelley: L'Unseen Power</h4>
-                        <p class="font-serif text-zinc-300 text-lg italic leading-relaxed">La tensione panteista nelle acque del Golfo di Lerici.</p>
-                    </div>
-                </div>
-                <div class="video-card reveal reveal-delay-1">
-                    <div class="video-container"><iframe src="https://www.youtube.com/embed/elsAlWZIjPg"></iframe></div>
-                    <div class="p-8">
-                        <h4 class="font-display text-amber-500 text-xl mb-4">Keats: Bellezza ed Eternità</h4>
-                        <p class="font-serif text-zinc-300 text-lg italic leading-relaxed">La liturgia della materia nel sonetto "Bright Star".</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="programma" class="py-24 bg-zinc-900 border-t border-zinc-800 relative">
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
             <div class="text-center mb-20 reveal">
                 <p class="font-sans text-sky-400 uppercase tracking-[0.2em] text-xs mb-3">Organizzazione</p>
                 <h2 class="font-display text-4xl md:text-5xl text-white mb-6">Tabella di Marcia</h2>
                 <div class="w-24 h-px bg-gold-500 mx-auto"></div>
             </div>
 
-            <div class="reveal reveal-delay-1 mb-20">
-                <h3 class="font-display text-3xl text-gold-500 mb-6 border-b border-zinc-700/50 pb-4">Sabato 7 Marzo: Riviera di Levante</h3>
+            <div class="reveal reveal-delay-1">
+                <h3 class="font-display text-3xl text-gold-500 mb-6 border-b border-zinc-700/50 pb-4">Sabato 7 Marzo: Arrivo e Riviera di Levante</h3>
                 <div class="logistics-table-container">
                     <table class="logistics-table">
                         <thead>
-                            <tr><th>Orario</th><th>Attività</th><th>Mezzo</th><th>Durata</th><th>Dettagli</th><th>Mappe</th></tr>
+                            <tr>
+                                <th>Orario</th>
+                                <th>Attività</th>
+                                <th>Mezzo</th>
+                                <th>Durata</th>
+                                <th>Dettagli e Indirizzo</th>
+                                <th>Link Utili & Mappe</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <tr><td>07:00</td><td>Partenza</td><td>Pullman</td><td>4 ore</td><td>Dal Liceo Calini</td><td></td></tr>
-                            <tr><td>11:00</td><td>Arrivo</td><td>-</td><td>-</td><td>Portovenere (Via Olivo 65)</td><td><a href="https://maps.google.com/?q=Portovenere" target="_blank" class="action-link">Map</a></td></tr>
-                            <tr><td>11:00-13:30</td><td>Visite</td><td>Piedi</td><td>-</td><td>S. Pietro, Grotta Byron, Castello Doria</td><td></td></tr>
-                            <tr><td>13:30</td><td>Pausa</td><td>-</td><td>-</td><td>Spiaggia Arenella (Pranzo al sacco)</td><td></td></tr>
-                            <tr><td>16:15</td><td>Cultura</td><td>Piedi</td><td>-</td><td>Villa Romana Varignano, Le Grazie</td><td></td></tr>
-                            <tr><td>18:00</td><td>Trasferimento</td><td>Pullman</td><td>-</td><td>Verso Bocca di Magra</td><td></td></tr>
+                            <tr>
+                                <td>07:00</td>
+                                <td>Partenza</td>
+                                <td>Pullman</td>
+                                <td>4 ore</td>
+                                <td>Partenza dal Liceo Calini</td>
+                                <td><a href="https://www.google.com/maps/dir/Liceo+scientifico+statale+Annibale+Calini,+Via+Monte+Suello,+2,+25128+Brescia+BS/Parcheggio+-+Zona+P1,+Via+Olivo,+65,+19025+Portovenere+SP/@44.7997918,9.1214223,211507m/data=!3m2!1e3!4b1!4m14!4m13!1m5!1m1!1s0x4781764137937539:0x6140eb3b8ec6329!2m2!1d10.2214414!2d45.5474431!1m5!1m1!1s0x12d4fd274bb29cf9:0x47efa55752f96285!2m2!1d9.83706!2d44.05268!3e0?entry=ttu&g_ep=EgoyMDI2MDQxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="action-link"><i class="fa-solid fa-map-pin mr-1"></i> Mappa Arrivo Portovenere</a></td>
+                            </tr>
+                            <tr>
+                                <td>11:00</td>
+                                <td>Arrivo</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Parcheggio Zona P1, Via Olivo 65, <a href="https://it.wikipedia.org/wiki/Porto_Venere" target="_blank" class="wiki-link">Portovenere</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>11:00 - 13:30</td>
+                                <td>Visite Culturali</td>
+                                <td>A piedi</td>
+                                <td>-</td>
+                                <td><a href="https://it.wikipedia.org/wiki/Chiesa_di_San_Pietro_(Porto_Venere)" target="_blank" class="wiki-link">Chiesa di San Pietro</a>, <a href="https://it.wikipedia.org/wiki/Grotta_dell%27Arpaia" target="_blank" class="wiki-link">Grotta di Lord Byron</a>, <a href="https://it.wikipedia.org/wiki/Chiesa_di_San_Lorenzo_(Porto_Venere)" target="_blank" class="wiki-link">Chiesa di San Lorenzo</a>, <a href="https://it.wikipedia.org/wiki/Castello_Doria_(Porto_Venere)" target="_blank" class="wiki-link">Castello Doria</a></td>
+                                <td><a href="https://www.visitportovenere.com/it" target="_blank" class="action-link"><i class="fa-solid fa-globe mr-1"></i> Visit Portovenere</a></td>
+                            </tr>
+                            <tr>
+                                <td>13:30</td>
+                                <td>Pausa Pranzo</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Spiaggia di Arenella (Via Olivo, 129). Pranzo al sacco.</td>
+                                <td><a href="https://www.google.com/maps/dir/Parcheggio+-+Zona+P1,+Via+Olivo,+65,+19025+Portovenere+SP/San+Pietro+Church,+Piazza+Lazzaro+Spallanzani,+19121+Porto+Venere+SP/Grotta+di+Lord+Byron,+SP530,+92,+19025+Portovenere+SP/Chiesa+di+San+Lorenzo,+19025+Porto+Venere+SP/Castello+Doria,+Via+Calata+Doria,+19025+Porto+Venere+SP/Spiaggia+di+Arenella,+Via+Olivo,+129,+19025+Portovenere+SP/@44.0518198,9.8299733,1674m/data=!3m2!1e3!4b1!4m38!4m37!1m5!1m1!1s0x12d4fd274bb29cf9:0x47efa55752f96285!2m2!1d9.83706!2d44.05268!1m5!1m1!1s0x12d4ff00304d3d43:0xe7c183c2b872ce5a!2m2!1d9.83237!2d44.0483114!1m5!1m1!1s0x12d4fea046887fbb:0xa4d8c55d9642bf8e!2m2!1d9.8325229!2d44.0502139!1m5!1m1!1s0x12d4fd002fd81045:0x6545fe5cc012a02c!2m2!1d9.8335915!2d44.050719!1m5!1m1!1s0x12d4ff0010e0f54f:0xeb0cde79dafb65b8!2m2!1d9.8327432!2d44.0512207!1m5!1m1!1s0x12d4fc21a03b860d:0xcc1de79ce5621ca3!2m2!1d9.8378978!2d44.055284!3e2?entry=ttu&g_ep=EgoyMDI2MDQxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="action-link"><i class="fa-solid fa-map-pin mr-1"></i> Mappa Spostamento</a></td>
+                            </tr>
+                            <tr>
+                                <td>15:30</td>
+                                <td>Trasferimento</td>
+                                <td>A piedi</td>
+                                <td>45 min</td>
+                                <td>Trasferimento verso <a href="https://it.wikipedia.org/wiki/Villa_romana_del_Varignano" target="_blank" class="wiki-link">Villa Varignano Vecchio</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>16:15</td>
+                                <td>Visita Culturale</td>
+                                <td>A piedi</td>
+                                <td>-</td>
+                                <td><a href="https://it.wikipedia.org/wiki/Villa_romana_del_Varignano" target="_blank" class="wiki-link">Villa romana del Varignano Vecchio</a>, <a href="https://it.wikipedia.org/wiki/Le_Grazie_(Porto_Venere)" target="_blank" class="wiki-link">Le Grazie</a></td>
+                                <td><a href="https://villaromanavarignano.cultura.gov.it/" target="_blank" class="action-link"><i class="fa-solid fa-globe mr-1"></i> Villa del Varignano</a></td>
+                            </tr>
+                            <tr>
+                                <td>17:45</td>
+                                <td>Sosta</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td><a href="https://it.wikipedia.org/wiki/Le_Grazie_(Porto_Venere)" target="_blank" class="wiki-link">Le Grazie</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>18:00</td>
+                                <td>Trasferimento</td>
+                                <td>Pullman</td>
+                                <td>-</td>
+                                <td>Partenza da <a href="https://it.wikipedia.org/wiki/Le_Grazie_(Porto_Venere)" target="_blank" class="wiki-link">Le Grazie</a> verso <a href="https://it.wikipedia.org/wiki/Bocca_di_Magra" target="_blank" class="wiki-link">Bocca di Magra</a></td>
+                                <td>
+                                    <a href="https://www.google.com/maps/dir/Spiaggia+di+Arenella,+Via+Olivo,+129,+19025+Portovenere+SP/Villa+romana+del+Varignano+Vecchio,+Via+Varignano+Vecchio,+19025+Le+Grazie+SP/Le+Grazie,+19025+SP/@44.0605469,9.8337948,1673m/data=!3m2!1e3!4b1!4m20!4m19!1m5!1m1!1s0x12d4fc21a03b860d:0xcc1de79ce5621ca3!2m2!1d9.8378978!2d44.055284!1m5!1m1!1s0x12d4fc3ea4804859:0x17430ed2b0b79bdf!2m2!1d9.8402353!2d44.06442!1m5!1m1!1s0x12d4fc3c1dde576d:0x9cfb2e005364b193!2m2!1d9.8340055!2d44.0657867!3e2?entry=ttu&g_ep=EgoyMDI2MDQxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="block action-link"><i class="fa-solid fa-map-pin mr-1"></i> Mappa Partenza</a>
+                                    <a href="https://www.google.com/maps/dir/Le+Grazie,+19025+SP/Monastero+Santa+Croce+Bocca+di+Magra+Ameglia+(SP)+-+ALBERGO+Casa+per+FERIE+per+RITIRI+SPIRITUALI+con+ampio+parco+NATURALE,+Via+Santa+Croce,+30,+19030+Bocca+di+Magra+SP/@44.0895983,9.8538058,13381m/data=!3m2!1e3!4b1!4m14!4m13!1m5!1m1!1s0x12d4fc3c1dde576d:0x9cfb2e005364b193!2m2!1d9.8340055!2d44.0657867!1m5!1m1!1s0x12d503fabd971115:0x2a76abb2f4e63232!2m2!1d9.9821673!2d44.043491!3e0?entry=ttu&g_ep=EgoyMDI2MDQxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="block mt-1 action-link"><i class="fa-solid fa-map-pin mr-1"></i> Mappa Arrivo</a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <div class="reveal reveal-delay-1 mb-20">
-                <h3 class="font-display text-3xl text-gold-500 mb-6 border-b border-zinc-700/50 pb-4">Domenica 8 Marzo: Cinque Terre e Lerici</h3>
+            <div class="reveal reveal-delay-1">
+                <h3 class="font-display text-3xl text-gold-500 mb-6 border-b border-zinc-700/50 pb-4">Domenica 8 Marzo: Le Cinque Terre e Lerici</h3>
                 <div class="logistics-table-container">
                     <table class="logistics-table">
                         <thead>
-                            <tr><th>Orario</th><th>Attività</th><th>Mezzo</th><th>Durata</th><th>Dettagli</th><th>Link</th></tr>
+                            <tr>
+                                <th>Orario</th>
+                                <th>Attività</th>
+                                <th>Mezzo</th>
+                                <th>Durata</th>
+                                <th>Dettagli e Indirizzo</th>
+                                <th>Link Utili & Mappe</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <tr><td>09:00-10:00</td><td>Trasferimento</td><td>Pullman</td><td>1 ora</td><td>Riomaggiore</td><td></td></tr>
-                            <tr><td>10:00</td><td>Escursione</td><td>Piedi</td><td>35 min</td><td>Via dell'Amore per Manarola</td><td><a href="https://www.viadellamore.info" target="_blank" class="action-link">Info</a></td></tr>
-                            <tr><td>13:30</td><td>Pranzo</td><td>-</td><td>-</td><td>Pranzo libero a Lerici</td><td></td></tr>
-                            <tr><td>16:00</td><td>Visita</td><td>Piedi</td><td>-</td><td>Torre di San Rocco, Lerici</td><td></td></tr>
-                            <tr><td>18:30</td><td>Rientro</td><td>Pullman</td><td>-</td><td>Verso Bocca di Magra</td><td></td></tr>
+                            <tr>
+                                <td>09:00 - 10:00</td>
+                                <td>Trasferimento</td>
+                                <td>Pullman / Treno</td>
+                                <td>1 ora</td>
+                                <td>Da <a href="https://it.wikipedia.org/wiki/Bocca_di_Magra" target="_blank" class="wiki-link">Bocca di Magra</a> a <a href="https://it.wikipedia.org/wiki/Riomaggiore" target="_blank" class="wiki-link">Riomaggiore</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>10:00</td>
+                                <td>Escursione</td>
+                                <td>A piedi</td>
+                                <td>35 min</td>
+                                <td><a href="https://it.wikipedia.org/wiki/Via_dell%27Amore" target="_blank" class="wiki-link">Via dell'Amore</a> fino a <a href="https://it.wikipedia.org/wiki/Manarola" target="_blank" class="wiki-link">Manarola</a></td>
+                                <td><a href="https://www.viadellamore.info/en" target="_blank" class="action-link"><i class="fa-solid fa-globe mr-1"></i> Via dell'Amore</a></td>
+                            </tr>
+                            <tr>
+                                <td>Mattina</td>
+                                <td>Rientro</td>
+                                <td>Treno</td>
+                                <td>-</td>
+                                <td>Rientro in treno a <a href="https://it.wikipedia.org/wiki/Riomaggiore" target="_blank" class="wiki-link">Riomaggiore</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>12:45</td>
+                                <td>Trasferimento</td>
+                                <td>Pullman</td>
+                                <td>37 min</td>
+                                <td>Partenza per <a href="https://it.wikipedia.org/wiki/Lerici" target="_blank" class="wiki-link">Lerici</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>13:30</td>
+                                <td>Pranzo</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Pranzo libero a <a href="https://it.wikipedia.org/wiki/Lerici" target="_blank" class="wiki-link">Lerici</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Pomeriggio</td>
+                                <td>Relax</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Sosta panoramica presso <a href="https://it.wikipedia.org/wiki/Venere_Azzurra" target="_blank" class="wiki-link">Venere Azzurra</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>16:00</td>
+                                <td>Visita</td>
+                                <td>A piedi</td>
+                                <td>-</td>
+                                <td>Torre di San Rocco, Largo G. Marconi, <a href="https://it.wikipedia.org/wiki/Lerici" target="_blank" class="wiki-link">Lerici</a></td>
+                                <td><a href="https://lericicoast.it/" target="_blank" class="action-link"><i class="fa-solid fa-globe mr-1"></i> Lerici Coast</a></td>
+                            </tr>
+                            <tr>
+                                <td>17:00</td>
+                                <td>Visita</td>
+                                <td>A piedi</td>
+                                <td>-</td>
+                                <td>Chiesa S. Francesco d'Assisi, <a href="https://it.wikipedia.org/wiki/Lerici" target="_blank" class="wiki-link">Lerici</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>18:30</td>
+                                <td>Trasferimento</td>
+                                <td>Pullman</td>
+                                <td>-</td>
+                                <td>Ripartenza per <a href="https://it.wikipedia.org/wiki/Bocca_di_Magra" target="_blank" class="wiki-link">Bocca di Magra</a></td>
+                                <td></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <div class="reveal reveal-delay-1 mb-20">
-                <h3 class="font-display text-3xl text-gold-500 mb-6 border-b border-zinc-700/50 pb-4">Lunedì 9 Marzo: Trekking e Rientro</h3>
+            <div class="reveal reveal-delay-1">
+                <h3 class="font-display text-3xl text-gold-500 mb-6 border-b border-zinc-700/50 pb-4">Lunedì 9 Marzo: Trekking Panoramico e Castello</h3>
                 <div class="logistics-table-container">
                     <table class="logistics-table">
                         <thead>
-                            <tr><th>Orario</th><th>Attività</th><th>Mezzo</th><th>Durata</th><th>Dettagli</th><th>Mappe</th></tr>
+                            <tr>
+                                <th>Orario</th>
+                                <th>Attività</th>
+                                <th>Mezzo</th>
+                                <th>Durata</th>
+                                <th>Dettagli e Indirizzo</th>
+                                <th>Link Utili & Mappe</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <tr><td>08:15</td><td>Spostamento</td><td>Pullman</td><td>1 ora</td><td>Parcheggio La Rocchetta</td><td></td></tr>
-                            <tr><td>09:15</td><td>Trekking</td><td>Piedi</td><td>-</td><td>Parco P. Shelley: CAI 411 (Pietraia)</td><td></td></tr>
-                            <tr><td>11:30</td><td>Visita</td><td>Piedi</td><td>-</td><td>Castello di Lerici</td><td></td></tr>
-                            <tr><td>15:00</td><td>Partenza</td><td>Pullman</td><td>-</td><td>Rientro a Brescia</td><td></td></tr>
+                            <tr>
+                                <td>08:15</td>
+                                <td>Trasferimento</td>
+                                <td>Pullman</td>
+                                <td>1 ora</td>
+                                <td>Da <a href="https://it.wikipedia.org/wiki/Bocca_di_Magra" target="_blank" class="wiki-link">Bocca di Magra</a> al Parcheggio La Rocchetta (<a href="https://it.wikipedia.org/wiki/Lerici" target="_blank" class="wiki-link">Lerici</a>)</td>
+                                <td><a href="https://www.google.com/maps/dir/Bocca+di+Magra,+19030+SP/44.074637,9.936469/@44.075097,9.9360547,264m/data=!3m1!1e3!4m8!4m7!1m5!1m1!1s0x12d503f04836f70f:0x62ac39620c9697e0!2m2!1d9.9762607!2d44.0536506!1m0?entry=ttu&g_ep=EgoyMDI2MDQxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="action-link"><i class="fa-solid fa-map-pin mr-1"></i> Mappa Trasferimento</a></td>
+                            </tr>
+                            <tr>
+                                <td>09:15</td>
+                                <td>Trekking</td>
+                                <td>A piedi</td>
+                                <td>-</td>
+                                <td>Parco P. Shelley: percorso CAI 411 (1,9 km) verso la Pietraia</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>11:15</td>
+                                <td>Trasferimento</td>
+                                <td>Pullman</td>
+                                <td>15 min</td>
+                                <td>Spostamento verso il <a href="https://it.wikipedia.org/wiki/Castello_di_Lerici" target="_blank" class="wiki-link">Castello di Lerici</a></td>
+                                <td><a href="https://www.google.com/maps/dir/44.074637,9.936469/Castello+San+Giorgio+di+Lerici,+P.za+S.Giorgio,+19032+Lerici+SP/@44.0788917,9.9116846,3346m/data=!3m2!1e3!4b1!4m8!4m7!1m0!1m5!1m1!1s0x12d5030c6dbb0a3b:0x793ce45e9eeb0074!2m2!1d9.907488!2d44.0729533?entry=ttu&g_ep=EgoyMDI2MDQxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="action-link"><i class="fa-solid fa-map-pin mr-1"></i> Mappa Percorso</a></td>
+                            </tr>
+                            <tr>
+                                <td>11:30</td>
+                                <td>Visita</td>
+                                <td>A piedi</td>
+                                <td>-</td>
+                                <td>Esplorazione del <a href="https://it.wikipedia.org/wiki/Castello_di_Lerici" target="_blank" class="wiki-link">Castello di Lerici</a></td>
+                                <td><a href="https://lericicoast.it/" target="_blank" class="action-link"><i class="fa-solid fa-globe mr-1"></i> Lerici Coast</a></td>
+                            </tr>
+                            <tr>
+                                <td>13:00</td>
+                                <td>Pranzo</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Pranzo libero in zona spiaggia</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>14:30</td>
+                                <td>Sosta</td>
+                                <td>A piedi</td>
+                                <td>-</td>
+                                <td>Passaggio riflessivo davanti a <a href="https://it.wikipedia.org/wiki/Villa_Magni" target="_blank" class="wiki-link">Villa Magni</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>15:00</td>
+                                <td>Partenza</td>
+                                <td>Pullman</td>
+                                <td>-</td>
+                                <td>Ripartenza definitiva per il rientro a Brescia</td>
+                                <td></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <div class="mt-10 bg-dark-900/50 p-8 md:p-12 rounded-3xl border border-zinc-700 reveal">
-                <h3 class="font-display text-3xl text-white mb-6 border-b border-zinc-700/50 pb-4">Note Organizzative</h3>
-                <div class="space-y-6 font-serif text-lg text-zinc-300">
-                    <p><strong>Costi:</strong> 15€ per ingressi Castello Doria, Villa Varignano e treni Cinque Terre.</p>
-                    <p><strong>Pasti:</strong> Sabato pranzo al sacco da casa. Il Monastero fornisce cena sabato, colazioni e i sacchi per domenica e lunedì.</p>
+            <div class="mt-10 bg-dark-900/50 backdrop-blur-sm p-8 md:p-12 rounded-3xl border border-zinc-700 shadow-xl reveal">
+                <h3 class="font-display text-3xl text-white mb-10 border-b border-zinc-700/50 pb-4">Dettagli Economici e Organizzativi</h3>
+                
+                <div class="space-y-8">
+                    <div class="border-l-2 border-gold-500/50 pl-6">
+                        <h4 class="font-sans text-gold-400 uppercase tracking-widest text-sm font-bold mb-3">Costi di Accesso e Trasporti</h4>
+                        <p class="font-serif text-xl text-zinc-300 leading-relaxed text-justify">
+                           La quota di 15 euro raccolta servirà a coprire l'ingresso al Castello Doria, il contributo per la visita alla Villa Romana del Varignano e le spese relative agli spostamenti in treno previsti dal programma.
+                        </p>
+                    </div>
+
+                    <div class="border-l-2 border-sky-500/50 pl-6">
+                        <h4 class="font-sans text-sky-400 uppercase tracking-widest text-sm font-bold mb-3">Gestione dei Pasti</h4>
+                        <p class="font-serif text-xl text-zinc-300 leading-relaxed text-justify">
+                            Considerata la natura dinamica del sabato, l'unico pasto da procurarsi preventivamente da casa resta il pranzo al sacco del primo giorno. Il <a href="https://it.wikipedia.org/wiki/Monastero_di_Santa_Croce_(Ameglia)" target="_blank" class="wiki-link">Monastero Santa Croce</a> provvederà infatti a coprire le necessità della cena, della prima colazione e fornirà anche i pranzi al sacco per le giornate di domenica e lunedì.
+                        </p>
+                    </div>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <section id="equipaggiamento" class="py-24 bg-zinc-900 border-t border-zinc-800">
-        <div class="max-w-5xl mx-auto px-6 reveal">
-            <h2 class="font-display text-4xl text-white mb-10 text-center">Equipaggiamento Necessario</h2>
-            <div class="bg-dark-900/50 p-10 rounded-3xl border border-zinc-700 space-y-8 font-serif text-xl text-zinc-300 text-justify">
-                <p>Solo zaino (no valigie). Documenti e 15€ contanti. Lenzuolo, sacco a pelo, asciugamano e pigiama.</p>
-                <p>Scarpe da cammino, ricambi in sacchetti impermeabili, maglione per la sera, cappello e K-way/poncho.</p>
-                <p>Borraccia (1L), torcia frontale, power bank, quaderno e penna. Materiale igiene personale, costume e ciabatte.</p>
+    <section id="equipaggiamento" class="py-24 bg-zinc-900 border-t border-zinc-800 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <p class="font-sans text-sky-400 uppercase tracking-[0.2em] text-xs mb-3">Preparazione</p>
+                <h2 class="font-display text-4xl md:text-5xl text-white mb-6">Equipaggiamento Necessario</h2>
+                <div class="w-24 h-px bg-gold-500 mx-auto"></div>
+            </div>
+
+            <div class="space-y-12 reveal">
+                <div class="bg-dark-900/50 p-8 md:p-12 rounded-3xl border border-zinc-700 shadow-xl">
+                    <p class="font-serif text-xl text-zinc-300 leading-relaxed mb-8 text-justify">
+                        Per vivere al meglio questa esperienza di cammino e contemplazione, è fondamentale preparare con cura il proprio zaino, ricordando che non sono ammesse borse a tracolla o valigie. All'interno non dovranno mancare i documenti d'identità e la quota di quindici euro in contanti per gli spostamenti in treno previsti dal programma. Per il riposo notturno presso il monastero, occorre munirsi di lenzuolo, sacco a pelo, materassino di tipo ginnico e un pigiama comodo.
+                    </p>
+
+                    <p class="font-serif text-xl text-zinc-300 leading-relaxed mb-8 text-justify">
+                        L'abbigliamento deve essere funzionale al movimento: scarpe adatte al cammino e vestiti pratici sono essenziali, includendo un ricambio completo da conservare preferibilmente in sacchetti impermeabili per proteggerli dall'umidità. È caldamente consigliato portare una felpa o un maglione per le serate più fresche, un cappello adatto alle condizioni meteo del momento e una protezione efficace per la pioggia come un K-way o, preferibilmente, un poncho.
+                    </p>
+
+                    <p class="font-serif text-xl text-zinc-300 leading-relaxed text-justify mb-0">
+                        La dotazione tecnica prevede una borraccia con capacità minima di un litro, una torcia preferibilmente frontale per gli spostamenti serali e un power bank completamente carico per il proprio telefono. Per i momenti di riflessione personale e studio, è utile avere con sé un quaderno e una penna. Non dimenticate il materiale per l'igiene personale, comprensivo di spazzolino, dentifricio, salviette umidificate e salvietta, oltre a costume da bagno, salviettone e ciabatte per la notte e per la doccia. Infine, si ricorda di portare il pranzo al sacco per la prima giornata di sabato e di segnalare preventivamente agli accompagnatori l'eventuale necessità di farmaci personali.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
     <footer class="pt-24 pb-12 bg-dark-900 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-sky-900/10 blur-[150px] rounded-full pointer-events-none"></div>
+
         <div class="max-w-3xl mx-auto px-6 relative z-10 reveal">
             <i class="fa-solid fa-dove text-5xl text-gold-500 mb-10 opacity-80"></i>
             <p class="font-serif text-3xl md:text-4xl text-white italic mb-12 leading-relaxed">
                 "Ci hai fatti per Te, o Signore,<br>e il nostro cuore è irrequieto<br>finché non trova finalmente pace in Te."
             </p>
-            <p class="font-display text-gold-500 tracking-[0.2em] uppercase text-sm mb-24">— Sant'Agostino d'Ippona</p>
-            <p class="font-sans text-zinc-500 text-[10px] uppercase">Liceo "A. Calini" • Brescia • 2026</p>
+            <p class="font-display text-gold-500 tracking-[0.2em] uppercase text-sm mb-24">— Sant'Agostino d'Ippona, Confessioni (I, 1, 1)</p>
+            
+            <div class="w-24 h-px bg-zinc-700 mx-auto mb-12"></div>
+            
+            <p class="font-sans text-zinc-500 text-[10px] md:text-xs tracking-[0.2em] leading-loose uppercase">
+                Liceo Scientifico "A. Calini" • Brescia<br>
+                Progetto Interdisciplinare Lingua Inglese - Religione Cattolica<br>
+                Dispensa digitale ad uso interno delle Classi 5C e 5G • 2026
+            </p>
         </div>
     </footer>
 
     <script>
-        // RADAR CHART
-        const ctx = document.getElementById('theologicalRadarChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'radar',
-            data: {
-                labels: ['Ignoto', 'Libertà', 'Panteismo', 'Bellezza Materia', 'Distanza Dogma'],
-                datasets: [
-                    { label: 'Lord Byron', data: [7, 10, 7, 3, 8], borderColor: '#38bdf8', backgroundColor: 'rgba(56,189,248,0.1)' },
-                    { label: 'Percy Shelley', data: [9, 8, 10, 4, 10], borderColor: '#D4AF37', backgroundColor: 'rgba(212,175,55,0.1)' },
-                    { label: 'John Keats', data: [8, 3, 5, 10, 5], borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.1)' }
-                ]
-            },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                scales: { r: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { display: false }, pointLabels: { color: '#a1a1aa' } } },
-                plugins: { legend: { labels: { color: '#fff', font: { size: 14 } } } }
+        // --- Animazioni Scroll ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.05, rootMargin: "0px 0px -50px 0px" });
+
+        revealElements.forEach(el => revealOnScroll.observe(el));
+
+        // --- Navbar Background Logic ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-glass-strong');
+                navbar.classList.remove('bg-transparent', 'border-transparent');
+            } else {
+                navbar.classList.remove('bg-glass-strong');
+                navbar.classList.add('bg-transparent', 'border-transparent');
             }
         });
 
-        // SCROLL REVEAL
-        const revealElements = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
-        }, { threshold: 0.1 });
-        revealElements.forEach(el => observer.observe(el));
+        // --- Chart.js (Radar Chart) ---
+        const ctx = document.getElementById('theologicalRadarChart').getContext('2d');
+        Chart.defaults.color = '#a1a1aa'; // zinc-400
+        Chart.defaults.font.family = "'Inter', sans-serif";
 
-        // NAVBAR LOGIC
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if(window.scrollY > 50) nav.classList.add('bg-glass-strong');
-            else nav.classList.remove('bg-glass-strong');
-        });
+        const chartData = {
+            labels: [
+                'Attrazione per l\'Ignoto Invisibile',
+                'Ricerca Estrema di Libertà Assoluta',
+                'Desiderio Cosmico Panteista',
+                'Amore per la Bellezza della Materia',
+                'Distanza dal Dogma Istituzionale Cattolico'
+            ],
+            datasets: [
+                {
+                    label: 'Lord Byron',
+                    data: [7, 10, 7, 3, 8], 
+                    backgroundColor: 'rgba(56, 189, 248, 0.15)', // Sky 400
+                    borderColor: '#38bdf8', borderWidth: 2,
+                    pointBackgroundColor: '#38bdf8', pointRadius: 4, pointHoverRadius: 6
+                },
+                {
+                    label: 'Percy Bysshe Shelley',
+                    data: [9, 8, 10, 4, 10], 
+                    backgroundColor: 'rgba(212, 175, 55, 0.15)', // Gold
+                    borderColor: '#D4AF37', borderWidth: 2,
+                    pointBackgroundColor: '#D4AF37', pointRadius: 4, pointHoverRadius: 6
+                },
+                {
+                    label: 'John Keats',
+                    data: [8, 3, 5, 10, 5], 
+                    backgroundColor: 'rgba(245, 158, 11, 0.15)', // Amber
+                    borderColor: '#f59e0b', borderWidth: 2,
+                    pointBackgroundColor: '#f59e0b', pointRadius: 4, pointHoverRadius: 6
+                }
+            ]
+        };
+
+        const chartOptions = {
+            responsive: true, maintainAspectRatio: false,
+            scales: {
+                r: {
+                    angleLines: { color: 'rgba(255, 255, 255, 0.05)' },
+                    grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                    pointLabels: {
+                        font: { family: "'Inter', sans-serif", size: window.innerWidth < 768 ? 10 : 12, weight: '500' },
+                        color: '#d4d4d8' // zinc-300
+                    },
+                    ticks: { display: false, min: 0, max: 10 }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { color: '#f8fafc', usePointStyle: true, padding: window.innerWidth < 768 ? 20 : 30, boxWidth: 8, font: { size: 13, weight: '500' } }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(24, 24, 27, 0.95)', // zinc-900
+                    titleFont: { family: "'Cinzel', serif", size: 16 },
+                    bodyFont: { family: "'Inter', sans-serif", size: 14 },
+                    padding: 16, borderColor: '#D4AF37', borderWidth: 1, cornerRadius: 8,
+                    callbacks: {
+                        label: function(context) { return ` ${context.dataset.label}: Livello ${context.raw}/10`; }
+                    }
+                }
+            }
+        };
+
+        new Chart(ctx, { type: 'radar', data: chartData, options: chartOptions });
     </script>
 </body>
 </html>
